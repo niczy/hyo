@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:gravity="center"
+    android:layout_height="match_parent">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_logo"
+                android:layout_gravity="center"/>
+
+            <EditText
+                android:layout_height="@dimen/login_form_height"
+                android:layout_width="@dimen/login_form_width"
+                android:layout_marginTop="40dp"
+                android:id="@+id/username"
+                android:inputType="text"
+                android:hint="@string/user_name"
+                android:drawSelectorOnTop="true"
+                android:cursorVisible="true"
+                android:textCursorDrawable="@null"
+                android:paddingLeft="@dimen/text_padding"
+                android:paddingRight="@dimen/text_padding"
+                android:paddingTop="1.5dp"
+                android:paddingBottom="1.5dp"
+                android:background="@drawable/edit_text_box"
+                 />
+
+
+            <EditText
+                android:layout_height="@dimen/login_form_height"
+                android:layout_width="@dimen/login_form_width"
+                android:id="@+id/password"
+                android:layout_marginTop="40dp"
+                android:inputType="textPassword"
+                android:textCursorDrawable="@null"
+                android:paddingLeft="@dimen/text_padding"
+                android:paddingRight="@dimen/text_padding"
+                android:paddingTop="1.5dp"
+                android:paddingBottom="1.5dp"
+                android:hint="@string/password"
+                android:background="@drawable/edit_text_box"/>
+
+
+            <Button
+                android:onClick="onLogin"
+                android:layout_height="@dimen/login_form_height"
+                android:layout_width="@dimen/login_form_width"
+                android:layout_marginTop="40dp"
+                android:text="@string/login_welcome"
+                android:textAppearance="@style/TextAppearance.Grey" />
+
+
+
+
+</LinearLayout>

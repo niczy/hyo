@@ -1,0 +1,44 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+<link rel="import" href="heymenu-dish.html">
+
+<polymer-element name="heymenu-grid-layout"  attributes="row colum">
+  <template>
+    <style>
+      /* styles for the custom element itself - lowest specificity */
+      :host {
+        display: block;
+        margin: 0px 0px 0px 10px;
+      }
+      /* 
+      style if an ancestor has the different class
+      :host(.different) { } 
+      */
+    </style>
+    <div id="containter"></div>
+  </template>
+  <script>
+    Polymer('heymenu-grid-layout', {
+      // element is fully prepared
+      ready: function(){ 
+        var gridLayout = this.$.containter;
+        for (var i = 0; i < 10; i++) {
+          var heymenuDish = new HeymenuDish();
+          gridLayout.appendChild(heymenuDish); 
+        }
+      },
+      // instance of the element is created
+      created: function() {
+        console.log('created ' + this.style.height); 
+      },
+      // instance was inserted into the document
+      enteredView: function() {
+        console.log('enterdView' + this.style.height); 
+      },
+      // instance was removed from the document
+      leftView: function() { },
+      // attribute added, removed or updated
+      attributeChanged: function(attrName, oldVal, newVal) { }
+    });
+  </script>
+</polymer-element>

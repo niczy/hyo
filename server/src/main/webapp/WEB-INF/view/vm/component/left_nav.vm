@@ -1,0 +1,26 @@
+#macro(nav_item, $itemName)
+    <li #if($pageName==$itemName)class="active"#end>
+        <a href="/$itemName.toLowerCase()">
+            $!bodyContent
+        </a>
+    </li>
+#end
+<ul class="nav nav-pills nav-stacked">
+    #if($mode=="operate")
+        #@nav_item("Status")Status#end
+        #@nav_item("Soldout")Soldout#end
+        #@nav_item("Monitor")Monitor#end
+        #@nav_item("History")History#end ##TODO
+    #elseif($mode=="admin")
+        #@nav_item("User")Users#end
+
+        #if($loginUser.type > 0)
+        #@nav_item("Table")Table#end
+        #@nav_item("Menu")Menu#end
+        ## #@nav_item("Member")Member#end
+        #@nav_item("Printer")Printer#end
+        #@nav_item("Device")Device#end ##TODO
+        #@nav_item("Stat")Stats#end
+        #end
+    #end
+</ul>

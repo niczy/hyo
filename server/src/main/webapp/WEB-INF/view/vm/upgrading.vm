@@ -1,0 +1,6 @@
+#set( $layout="layout/empty.vm")
+#set($pageName="Upgrading")
+
+<div class="alert">
+    Database upgrading, please refresh later.
+</div>

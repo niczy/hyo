@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Highlight color - eg. button -->
+    <color name="highlight_pressed">#820000</color>
+    <color name="highlight">#BE0029</color>
+    <color name="menu_highlight">#BE0029</color>
+    <!-- light grey color - eg. large background -->
+    <color name="light_grey">#F6F6F6</color>
+    <color name="light_blue_grey">#EFEFF4</color>
+    <!-- mid grey color - eg. button -->
+    <color name="mid_grey">#B9BBC5</color>
+    <!-- dark grey color - eg. text -->
+    <color name="dark_grey">#808A97</color>
+    <color name="dialog_label">#808A97</color>
+</resources>

@@ -1,0 +1,1 @@
+-- INSERT INTO restaurant (name) VALUES ('my_restaurant');

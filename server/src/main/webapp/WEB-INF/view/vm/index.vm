@@ -1,0 +1,154 @@
+#set( $layout = "layout/static.vm")
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Heymenu</title>
+#parse("component/static_head.vm")
+  </head>
+
+  <body>
+	<!--navigation bar-->
+#parse("component/static_nav.vm")
+	
+	<div class="wrapper-hero">
+		<div class="background-hero hidden-xs">
+			<div class="background-txt"></div>
+			<div class="txt-band">
+				<div class="container">
+					<div class="row">
+						<p class="col-sm-6 col-md-6 text-center hidden-sm">$20/Tablet/Month | Free Software | No Extra Fee</p>
+						<p class="col-sm-6 col-md-6 text-center visible-sm">$20/Tablet/Month | Free Software | No Extra Fee</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="background-hero-mobile visible-xs"></div>
+		<div class="container">
+			<div class="row">
+				<div class="slogan col-sm-6 col-md-6 text-center hidden-xs hidden-sm">
+					<h1>Affordable & Portable</br> Restaurant Management Platform</br></br></h1>
+					<div class="row">
+						<div class="col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6">
+							<a class="btn-primary" href="signup" target="_top">Get Started</a>
+						</div>
+					</div>
+				</div>
+				
+				<div class="slogan-tablet col-sm-6 text-center visible-sm">
+					<h1>Affordable & Portable</br> Restaurant Management Platform</br></br></h1>
+					<div class="row">
+						<div class="col-xs-6 col-xs-offset-3">
+							<a class="btn-primary" href="signup" target="_top">Get Started</a>
+						</div>
+					</div>
+				</div>
+				
+				<div class="slogan-mobile col-xs-12 text-center visible-xs">
+					<h1>Affordable & Portable</br> Restaurant Management Platform</br></br></h1>
+					<div class="row">
+						<div class="col-xs-10 col-xs-offset-1">
+							<a class="btn-primary" href="signup" target="_top">Get Started</a>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-xs-12 col-sm-6 col-lg-6">
+					<img src="static/home/cover.png" class="pull-right center-block img-responsive" alt="Heymenu Tablet">
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="wrapper-content">
+		<div class="container">
+			<!--anchor-->
+			<a id="easy-dinning-experience" href="#easy-dinning-experience"><p>&ensp;</p></a>
+			<div class="row">
+				<h2 class="col-xs-12 text-center">
+					Seamless Dinning Experience </br> For Your Customers
+				</h2>
+				
+				<div class="row">
+					<p class="col-xs-12 col-sm-10 col-sm-offset-1 text-center txt-content">With Heymenu's well designed user interface, you can expand your menu with vivid and colorful photos and detailed descriptions of every offered food item, and let guests place their orders whenever they're ready. </p>
+				</div>
+				
+				<div class="col-xs-12 col-sm-12 img-content">
+					<img src="static/home/customers-experience.png" class="center-block img-responsive" alt="Easy Customers Experience">
+				</div>
+				
+				<div class="col-sm-4 col-sm-offset-4">
+					<div class="row">
+						<div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2">
+							<a class="btn-secondary" href="heymenu" target="_top">HeyMenu</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="container">
+		<!--anchor-->
+		<a id="managing-tool" href="#managing-tool"><p>&ensp;</p></a>
+		<div class="row">
+			<h2 class="col-xs-12 text-center title-content">
+				HummingManager helps you manage your menu and tables</br> with simple clicks
+			</h2>
+			
+			<div class="row">
+				<p class="col-xs-12 col-sm-10 col-sm-offset-1 text-center txt-content">Make on-the-fly changes to your menu at any time without spending money to reprint your menus every time you make a slight change. </br>See what tables are open at a glance, so you're always running at full capacity.
+				</p>
+			</div>
+			
+			<div class="col-xs-12 col-sm-12 img-content">
+				<img src="static/home/managing-tool.png" class="center-block img-responsive" alt="Powerful Managing Tool">
+			</div>
+			
+			<div class="col-sm-4 col-sm-offset-4">
+				<div class="row">
+					<div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2">
+						<a class="btn-secondary" href="hummingmanager" target="_top">HummingManager</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="wrapper-content pricing">
+		<div class="container">
+			<!--anchor-->
+			<a id="affordable-price" href="#affordable-price"><p>&ensp;</p></a>
+			<div class="row">
+				<h2 class="col-xs-12 text-center">
+					Affordable Price
+				</h2>
+				
+				<p class="col-xs-12 col-sm-10 col-sm-offset-1 text-center txt-content">Our pricing is simple: $20/month flat, all inclusive. Imagine what you could do with all the money you'll save.</br>No cover fees, No contracts, No installation fees.</p>
+				
+				<div class="col-xs-7 col-sm-5 col-sm-offset-1 img-content">
+					<img src="static/home/tablet-graphic.png" class="center-block img-responsive" alt="Tablet Graphic">
+				</div>
+				
+				<div class="col-xs-5 col-sm-3 col-sm-offset-1 img-content">
+					<img src="static/home/pricing.png" class="center-block img-responsive" alt="Pricing">
+				</div>
+				
+				<div class="col-sm-3 col-sm-offset-7 hidden-xs">
+					<div class="btn-wrapper-pricing">
+						<a class="btn-primary" href="mailto:hey@Heymenu.com" target="_top">Get Started</a>
+					</div>
+				</div>
+				<div class="col-xs-10 col-xs-offset-1 visible-xs pull-left">
+					<a class="btn-primary" href="mailto:hey@Heymenu.com" target="_top">Get Started</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+#parse("component/static_footer.vm")
+	
+	<!-- javascripts -->
+#parse("component/static_script.vm")
+
+  </body>
+</html>

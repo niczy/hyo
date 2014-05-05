@@ -1,0 +1,45 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+<link rel="import" href="../bower_components/core-layout/core-layout.html">
+<link rel="import" href="../bower_components/core-menu/core-menu.html">
+<link rel="import" href="heymenu-header.html">
+<link rel="import" href="heymenu-dish-filter.html">
+<link rel="import" href="heymenu-grid-layout.html">
+
+<polymer-element name="heymenu-app"  attributes="">
+  <template>
+    <style>
+      div {
+        border: solid;
+      }
+      /* styles for the custom element itself - lowest specificity */
+      :host { display: block; }
+      /* 
+      style if an ancestor has the different class
+      :host(.different) { } 
+      */
+    </style>
+    <heymenu-header></heymenu-header>
+    <core-layout>
+      <heymenu-dish-filter></heymenu-dish-filter>
+      <div core-flex>
+        <heymenu-grid-layout id="dishContainer"></heymenu-grid-layout> 
+      </div>
+    </core-layout>
+  </template>
+  <script>
+    Polymer('heymenu-app', {
+      // element is fully prepared
+      ready: function(){
+      },
+      // instance of the element is created
+      created: function() { },
+      // instance was inserted into the document
+      enteredView: function() { },
+      // instance was removed from the document
+      leftView: function() { },
+      // attribute added, removed or updated
+      attributeChanged: function(attrName, oldVal, newVal) { }
+    });
+  </script>
+</polymer-element>

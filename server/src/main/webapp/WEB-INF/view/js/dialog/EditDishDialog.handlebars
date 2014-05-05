@@ -1,0 +1,128 @@
+<form class="form-edit-dish form-horizontal">
+    <div class="control-group input-name">
+        <label class="control-label">Name:</label>
+        <div class="controls">
+            <input type="text" name="name"/>
+            <span class="help-inline error"></span>
+        </div>
+    </div>
+    <div class="control-group input-price">
+        <label class="control-label">Price:</label>
+        <div class="controls">
+            <input type="text" name="price"/>
+            <span class="help-inline error"></span>
+        </div>
+    </div>
+    <div class="control-group input-memberPrice">
+        <label class="control-label">Membership price:</label>
+        <div class="controls">
+            <input type="text" name="memberPrice"/>
+            <span class="help-inline error"></span>
+        </div>
+    </div>
+    <div class="control-group input-unit">
+        <label class="control-label">Unit:</label>
+        <div class="controls">
+            
+            <label class="radio inline">
+                <input type="radio" name="unit" value="1"/>
+               Pound 
+            </label>
+           
+            <label class="radio inline">
+                <input type="radio" name="unit" value="4"/>
+                Plate 
+            </label>
+            <label class="radio inline">
+                <input type="radio" name="unit" value="5"/>
+               Bottle 
+            </label>
+            <label class="radio inline">
+                <input type="radio" name="unit" value="6"/>
+               Cup 
+            </label>
+            
+            <label class="radio inline">
+                <input type="radio" name="unit" value="8"/>
+               Per Person 
+            </label>
+            <span class="help-inline error"></span>
+        </div>
+    </div>
+    <div class="control-group input-spicy">
+        <label class="control-label">Spicy:</label>
+        <div class="controls">
+            <label class="radio inline">
+                <input type="radio" name="spicy" value="0" checked="true"/>
+               No Spicy 
+            </label>
+            <label class="radio inline">
+                <input type="radio" name="spicy" value="1"/>
+               Mid 
+            </label>
+            <label class="radio inline">
+                <input type="radio" name="spicy" value="2"/>
+               Spicy 
+            </label>
+            <label class="radio inline">
+                <input type="radio" name="spicy" value="3"/>
+               Very Spicy 
+            </label>
+            <span class="help-inline error"></span>
+        </div>
+    </div>
+    <div class="control-group input-specialPrice">
+        <label class="control-label">Special:</label>
+        <div class="controls">
+            <label class="radio inline">
+                <input type="radio" name="specialPrice" value="false" checked="true"/>
+               No 
+            </label>
+            <label class="radio inline">
+                <input type="radio" name="specialPrice" value="true"/>
+               Yes 
+            </label>
+            <span class="help-inline error"></span>
+        </div>
+    </div>
+    <div class="control-group input-nonInt">
+        <label class="control-label">Small Size:</label>
+        <div class="controls">
+            <label class="radio inline">
+                <input type="radio" name="nonInt" value="false" checked="true"/>
+               No 
+            </label>
+            <label class="radio inline">
+                <input type="radio" name="nonInt" value="true"/>
+               Yes 
+            </label>
+            <span class="help-inline error"></span>
+        </div>
+    </div>
+    <div class="control-group input-desc">
+        <label class="control-label">Description:</label>
+        <div class="controls">
+            <textarea rows="3"  name="desc"></textarea>
+            <span class="help-inline error"></span>
+        </div>
+    </div>
+    <div class="control-group input-uriData">
+        <label class="control-label">Picture:</label>
+        <div class="controls">
+            <div class="fileupload fileupload-new" data-provides="fileupload">
+                <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;">
+                    <img src="/static/placeholder-200-150.png" />
+                </div>
+                <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
+                <div>
+                    <span class="btn btn-file">
+                        <span class="fileupload-new">Select picture</span>
+                        <span class="fileupload-exists">Replace picture</span>
+                        <input type="file" />
+                    </span>
+                    <a href="#" class="btn fileupload-exists" data-dismiss="fileupload">Delete picture</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

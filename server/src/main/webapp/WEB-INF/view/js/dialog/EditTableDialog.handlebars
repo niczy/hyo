@@ -1,0 +1,71 @@
+<form class="form-create-table form-horizontal">
+    <div class="control-group input-name">
+        <label class="control-label">Table Name:</label>
+        <div class="controls">
+            <input type="text" name="name"/>
+            <span class="help-inline error"></span>
+        </div>
+    </div>
+    <div class="control-group input-type">
+        <label class="control-label">Location:</label>
+        <div class="controls">
+            <label class="radio inline">
+                <input type="radio" name="type" value="0" checked="true"/>
+               Room 
+            </label>
+            <label class="radio inline">
+                <input type="radio" name="type" value="1"/>
+               Hall 
+            </label>
+            <label class="radio inline">
+                <input type="radio" name="type" value="2"/>
+               Booth 
+            </label>
+            <span class="help-inline error"></span>
+        </div>
+    </div>
+    <div class="control-group input-capacity">
+        <label class="control-label">Max Capacity:</label>
+        <div class="controls">
+            <input type="text" name="capacity"/>
+            <span class="help-inline error"></span>
+        </div>
+    </div>
+    <div class="control-group input-minCharge">
+        <label class="control-label">Minimum Spending:</label>
+        <div class="controls">
+            <input type="text" name="minCharge"/>
+            <span class="help-inline error"></span>
+        </div>
+    </div>
+    <div class="input-tip">
+        <div class="control-group wrap-tip-mode">
+            <label class="control-label">Service Fee Type:</label>
+            <div class="controls">
+                <label class="radio inline">
+                    <input type="radio" name="tipMode" value="0" checked="true"/>
+                   None 
+                </label>
+                <label class="radio inline">
+                    <input type="radio" name="tipMode" value="1"/>
+                   Flat rate 
+                </label>
+                <label class="radio inline">
+                    <input type="radio" name="tipMode" value="2"/>
+                   Percentage 
+                </label>
+            </div>
+        </div>
+        <div class="control-group wrap-tip">
+            <label class="control-label">Tip:</label>
+            <div class="controls">
+                <div class="input-append">
+                    <input type="text" name="tip"/>
+                    <span class="add-on">%</span></span>
+                </div>
+                <span class="help-inline error"></span>
+            </div>
+        </div>
+    </div>
+</form>
+

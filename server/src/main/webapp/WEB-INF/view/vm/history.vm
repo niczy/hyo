@@ -1,0 +1,17 @@
+#set($mode="operate")
+#set($pageName="History")
+
+
+#macro (history_nav_item, $tab_name)
+  <li class="tab-$tab_name">
+    <a href="#$tab_name" class="link-$tab_name">$!bodyContent</a>
+  </li>
+#end
+<ul class="nav nav-tabs">
+    #@history_nav_item("order")Order#end
+    #@history_nav_item("stat")Stats#end
+    #@history_nav_item("dish-stat")Dish stats#end
+    #@history_nav_item("menu-stat")Menu stats#end
+</ul>
+<div class="bottom-content">
+</div>

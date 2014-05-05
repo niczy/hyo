@@ -1,0 +1,29 @@
+#@layout_common()
+<!-- add full width background to the nav bar -->
+	<div class="nav_bar">
+		<div class="container">
+		#parse('component/top_nav.vm')
+		</div>
+	</div>
+	
+    <div class="container">
+        <div class="row">
+            <div class="span2 left-bar well">
+                #parse('component/left_nav.vm')
+            </div>
+            <div class="span9">
+                $screen_content
+            </div>
+        </div>
+    </div>
+	
+	<div class="footer_bar">
+		<div class="container">
+			<div class="row">
+				<div class="span12 text-center">
+					<p>Copyright &#169 2014, Heymenu Inc., All rights reserved.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+#end

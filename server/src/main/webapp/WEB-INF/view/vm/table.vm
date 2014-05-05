@@ -1,0 +1,19 @@
+#set($mode="admin")
+#set($pageName="Table")
+
+#macro (table_nav_item, $tab_name)
+  <li class="tab-$tab_name">
+    <a href="#$tab_name" class="link-$tab_name">$!bodyContent</a>
+  </li>
+#end
+<ul class="nav nav-tabs">
+    #@table_nav_item("all")All#end
+    #@table_nav_item("room")Room#end
+    #@table_nav_item("hall")Hall#end
+    #@table_nav_item("booth")Booth#end
+    <li class="pull-right">
+        <a href="" class="btn-create-table">Add table</a>
+    </li>
+</ul>
+<div class="wrap-list">
+</div>

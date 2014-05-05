@@ -1,0 +1,32 @@
+#set( $layout = "layout/empty.vm" )
+#set($pageName="Login")
+<div class="container">
+    <div class="row">
+        <div class="page-header text-center">
+            <h1>
+                Welcome to Heymenu</br>
+                <small>Manage your menu, tables, devices and staffs all from one place.</small>
+            </h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="span4 offset4 well">
+            <form class="form-login">
+                <legend class="text-center">Login</legend>
+                <div class="control-group input-name">
+                    <div class="controls">
+                        <input class="input-block-level" type="text" name="userName" placeholder="user name"/>
+                        <span class="help-inline error"></span>
+                    </div>
+                </div>
+                <div class="control-group input-password">
+                    <div class="controls">
+                        <input class="input-block-level" type="password" name="password" placeholder="password"/>
+                        <span class="help-inline error"></span>
+                    </div>
+                </div>
+                <span class="btn btn-primary btn-submit">login</span>
+            </form>
+        </div>
+    </div>
+</div>

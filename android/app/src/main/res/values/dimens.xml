@@ -1,0 +1,18 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="alert_dialog_stroke">1dp</dimen>
+    <dimen name="login_form_width">200dp</dimen>
+    <dimen name="login_form_height">30dp</dimen>
+    <dimen name="text_padding">10dp</dimen>
+    <dimen name="order_confirm_padding">60dp</dimen>
+
+    <!-- text size -->
+    <dimen name="text_regular">14sp</dimen>
+    <dimen name="text_medium">18sp</dimen>
+    <dimen name="text_large">24sp</dimen>
+    <dimen name="order_dialog_first_column_width">100dp</dimen>
+    <dimen name="order_dialog_third_column_width">60dp</dimen>
+    <dimen name="order_dialog_first_column_margin_right">50dp</dimen>
+</resources>

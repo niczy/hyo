@@ -1,0 +1,20 @@
+#set($mode="admin")
+#set($pageName="User")
+
+#macro (user_nav_item, $tab_name)
+  <li class="tab-$tab_name">
+    <a href="#$tab_name" class="link-$tab_name">$!bodyContent</a>
+  </li>
+#end
+<ul class="nav nav-tabs">
+    #@user_nav_item("all")All#end
+    #@user_nav_item("admin")Admin#end
+    #@user_nav_item("user")Waiter/Waitress#end
+    #if($loginUser.type>$UserType.USER)
+        <li class="pull-right">
+            <a href="" class="btn-create-user">New User</a>
+        </li>
+    #end
+</ul>
+<div class="wrap-list">
+</div>

@@ -1,0 +1,35 @@
+apply plugin: 'android'
+
+android {
+    compileSdkVersion 19
+    buildToolsVersion '19.0.2'
+
+    defaultConfig {
+        minSdkVersion 11
+        targetSdkVersion 16
+    }
+
+    buildTypes {
+        release {
+            runProguard false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+        }
+    }
+    lintOptions {
+        abortOnError false
+    }
+    packagingOptions {
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+    }
+
+}
+
+dependencies {
+    compile 'com.android.support:appcompat-v7:+'
+    compile files('libs/pinyin4j-2.5.0.jar')
+    compile files('libs/slf4j-android-1.6.1-RC1.jar')
+    compile files('libs/commons-codec-1.4.jar')
+    compile files('libs/thrift.jar')
+    compile files('libs/libthrift-0.9.1.jar')
+}

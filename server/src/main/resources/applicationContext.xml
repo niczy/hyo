@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <bean id="appConfig" class="com.cloudstone.emenu.AppConfig">
+        <property name="maps">
+            <map>
+                <entry key="dbFileName" value="cloudstone.db"></entry>
+                <entry key="cloudstoneDataDir" value="/var/lib/sqlite"></entry>
+            </map>
+        </property>
+    </bean>
+
+    <bean  id="applicationContextProvider" class="com.cloudstone.emenu.AppContext"></bean>
+
+    <!-- Initialization for data source -->
+    <bean id="dataSource"
+          class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/heymenu"/>
+        <property name="username" value="root"/>
+        <property name="password" value=""/>
+    </bean>
+
+    <!-- Definition for restaurantJDBC bean -->
+    <bean id="restaurantJDBC"
+          class="com.cloudstone.emenu.storage.mysql.RestaurantJDBC">
+        <property name="dataSource"  ref="dataSource" />
+    </bean>
+
+</beans>

@@ -1,0 +1,28 @@
+<form class="form-edit-menu-page form-horizontal">
+    <div class="control-group input-ordinal info">
+        <label class="control-label">Position:</label>
+        <div class="controls">
+            <select name="ordinal">
+                {{#each ordinals}}
+                    <option value="{{this}}">Page {{this}}</option>
+                {{/each}}
+            </select>
+            <span class="help-inline info">position in category</span>
+            <span class="help-inline error"></span>
+        </div>
+    </div>
+    <div class="control-group input-dishCount info">
+        <label class="control-label">Menu layout:</label>
+        <div class="controls">
+            <select name="dishCount">
+                <option value="1">One item per page</option>
+                <option value="2">Two items per page</option>
+                <option value="3">Three items per page</option>
+                <option value="4" selected="true">Four items per page</option>
+                <option value="6">Six items per page</option>
+            </select>
+            <span class="help-inline error"></span>
+        </div>
+    </div>
+</form>
+

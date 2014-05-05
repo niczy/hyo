@@ -1,0 +1,53 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+
+<link rel="import" href="../bower_components/core-menu/core-menu.html">
+
+<polymer-element name="heymenu-dish-filter"  attributes="">
+  <template>
+    <style>
+      core-menu {
+        margin: 0px;
+        background-color: rgb(130, 0, 0);
+      }
+      core-item {
+        width: 60px;
+        padding: 10px;
+        margin: 10px 10px 10px 10px;
+        color: white;
+      }
+      core-item.core-selected {
+        color: rgb(130,0,0);
+        background-color: white;
+      }
+
+      /* styles for the custom element itself - lowest specificity */
+      :host { display: block; }
+      /* 
+      style if an ancestor has the different class
+      :host(.different) { } 
+      */
+    </style>
+    <core-menu selected="0">
+      <core-layout vertical>
+      </core-layout>
+      <core-item label="Settings">Settings</core-item>
+      <core-item label="Dialog">Dialog</core-item>
+      <core-item label="Search">Search</core-item>
+    </core-menu>
+  </template>
+  <script>
+    Polymer('heymenu-dish-filter', {
+      // element is fully prepared
+      ready: function(){ },
+      // instance of the element is created
+      created: function() { },
+      // instance was inserted into the document
+      enteredView: function() { },
+      // instance was removed from the document
+      leftView: function() { },
+      // attribute added, removed or updated
+      attributeChanged: function(attrName, oldVal, newVal) { }
+    });
+  </script>
+</polymer-element>

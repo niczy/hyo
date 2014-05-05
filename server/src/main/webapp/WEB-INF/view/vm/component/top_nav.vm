@@ -1,0 +1,18 @@
+#macro(mode_tab, $tab_mode)
+    <li #if($mode==$tab_mode)class="active"#end><a href="/$tab_mode">$!bodyContent</a></li>
+#end
+
+	<div class="navbar top-nav">
+		<div class="navbar-inner">
+			<a class="brand" href="/home">Heymenu</a>
+			<ul class="nav">
+				#@mode_tab("operate")Operation#end
+				#@mode_tab("admin")Management#end
+			</ul>
+			<span class="pull-right wrap-logout">
+				<p class="pull-left">Welcome $loginUser.name,</p>
+				<a href="/logout" class="text-center pull-left">Logout</a>
+			</span>
+		</div>
+	</div>
+

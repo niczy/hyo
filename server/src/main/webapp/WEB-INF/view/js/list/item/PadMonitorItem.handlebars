@@ -1,0 +1,15 @@
+<div>
+    <span class="label label-info pad-name">{{name}}</span>
+    <div class="progress">
+        <div class="bar bar-{{batteryStatus}}" style="width: {{batteryLevel}}%;"></div>
+    </div>
+    <div class="text-left text-smaller">Battery:{{batteryLevel}}%</div>
+    <div class="text-left text-smaller">User:
+        {{#if session}}
+            {{#if session.user}}{{session.user.name}}{{else}}N/A{{/if}}
+        {{else}}
+           None 
+        {{/if}}
+    </div>
+    <div class="alert alert-{{timeStatus}} text-smaller">{{timeText}}</div>
+</div>

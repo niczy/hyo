@@ -1,0 +1,16 @@
+#set($mode="operate")
+#set($pageName="Status")
+
+#macro (status_nav_item, $tab_name)
+  <li class="tab-$tab_name">
+    <a href="#$tab_name" class="link-$tab_name">$!bodyContent</a>
+  </li>
+#end
+<ul class="nav nav-tabs">
+    #@status_nav_item("all")All#end
+    #@status_nav_item("room")Room#end
+    #@status_nav_item("hall")Hall#end
+    #@status_nav_item("booth")Booth#end
+</ul>
+<div class="wrap-list">
+</div>

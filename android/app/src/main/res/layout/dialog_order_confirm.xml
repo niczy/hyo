@@ -1,0 +1,252 @@
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:layout_width="600dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/alert_dialog_background"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_marginTop="35dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:textColor="@android:color/black"
+                android:fontFamily="sans-serif-light"
+                android:textSize="@dimen/text_large"
+                android:text="Confirm Your Order"
+                android:gravity="center"
+                android:layout_marginLeft="@dimen/order_confirm_padding"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                />
+
+            <ImageButton
+                android:id="@+id/cancel"
+                android:scaleType="fitStart"
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_close"
+                android:layout_width="@dimen/order_confirm_padding"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="35dp"
+            android:layout_marginRight="@dimen/order_confirm_padding"
+            android:layout_marginLeft="@dimen/order_confirm_padding"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/name"
+                android:text="@string/qty"
+                android:textColor="@color/dark_grey"
+                android:textSize="@dimen/text_regular"
+                android:gravity="center_horizontal"
+                android:layout_marginRight="@dimen/order_dialog_first_column_margin_right"
+                android:layout_width="@dimen/order_dialog_first_column_width"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/item"
+                android:text="@string/item"
+                android:textColor="@color/dark_grey"
+                android:textSize="@dimen/text_regular"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/price"
+                android:text="@string/price"
+                android:textColor="@color/dark_grey"
+                android:textSize="@dimen/text_regular"
+                android:gravity="right"
+                android:layout_width="@dimen/order_dialog_third_column_width"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:orientation="horizontal"
+            android:background="@drawable/ic_divider"
+            android:layout_gravity="center"
+            android:layout_width="470dp"
+            android:layout_height="1dp"
+        />
+
+        <ListView
+            android:id="@+id/list"
+            android:listSelector="@android:color/transparent"
+            android:layout_marginLeft="@dimen/order_confirm_padding"
+            android:layout_marginRight="@dimen/order_confirm_padding"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="0dp"></ListView>
+
+        <ImageView
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
+            android:orientation="horizontal"
+            android:background="@drawable/ic_divider"
+            android:layout_gravity="center"
+            android:layout_width="470dp"
+            android:layout_height="1dp"/>
+
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
+            android:paddingRight="@dimen/order_confirm_padding"
+            android:paddingLeft="@dimen/order_confirm_padding"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:text=""
+                android:textStyle="bold"
+                android:textColor="@color/dark_grey"
+                android:textSize="@dimen/text_regular"
+                android:gravity="center_horizontal"
+                android:layout_marginRight="@dimen/order_dialog_first_column_margin_right"
+                android:layout_width="@dimen/order_dialog_first_column_width"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/subtotal"
+                android:text="@string/subtotal"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/text_regular"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/subtotal_price"
+                android:text="$398"
+                android:textStyle="bold|italic"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/text_regular"
+                android:gravity="right"
+                android:layout_width="@dimen/order_dialog_third_column_width"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
+            android:paddingLeft="@dimen/order_confirm_padding"
+            android:paddingRight="@dimen/order_confirm_padding"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:text=""
+                android:textStyle="bold"
+                android:textColor="@color/dark_grey"
+                android:textSize="@dimen/text_regular"
+                android:gravity="center_horizontal"
+                android:layout_marginRight="@dimen/order_dialog_first_column_margin_right"
+                android:layout_width="@dimen/order_dialog_first_column_width"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/tax"
+                android:text="@string/tax"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/text_regular"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/tax_value"
+                android:text="$39"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/text_regular"
+                android:textStyle="italic"
+                android:gravity="right"
+                android:layout_width="@dimen/order_dialog_third_column_width"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
+            android:orientation="horizontal"
+            android:background="@drawable/ic_divider"
+            android:layout_gravity="center"
+            android:layout_width="470dp"
+            android:layout_height="1dp"/>
+
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:paddingLeft="@dimen/order_confirm_padding"
+            android:paddingRight="@dimen/order_confirm_padding"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:text=""
+                android:textStyle="bold"
+                android:textColor="@color/dark_grey"
+                android:textSize="20sp"
+                android:gravity="center_horizontal"
+                android:layout_marginRight="@dimen/order_dialog_first_column_margin_right"
+                android:layout_width="@dimen/order_dialog_first_column_width"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/total"
+                android:text="@string/total"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/text_large"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/total_values"
+                android:text="$498"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/text_large"
+                android:textStyle="italic"
+                android:gravity="right"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_marginTop="35dp"
+            android:layout_height="1dp"
+            android:background="@drawable/divider"
+            android:layout_gravity="bottom"
+            />
+
+        <LinearLayout
+            android:padding="20dp"
+            android:gravity="center"
+            android:layout_marginLeft="1dp"
+            android:layout_marginRight="1dp"
+            android:orientation="horizontal"
+            android:background="@color/light_blue_grey"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/order"
+                android:text="@string/place_order"
+                android:background="@drawable/btn_menu_primary"
+                android:padding="5dp"
+                android:layout_width="140dp"
+                android:layout_height="35dp" />
+
+            </LinearLayout>
+    </LinearLayout>
+
+</merge>

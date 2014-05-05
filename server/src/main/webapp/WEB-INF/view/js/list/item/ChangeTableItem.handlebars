@@ -1,0 +1,10 @@
+<div>{{name}}</div>
+<div>
+    <span class="label label-{{#if empty}}success{{else}}important{{/if}}">
+        Status:{{#if empty}}Idle{{else}}Used{{/if}}
+    </span>
+</div>
+<div class='btn-wrap'>
+    <span class="btn btn-primary btn-mini btn-select {{#unless empty}}disabled{{/unless}}">Select</span>
+</div>
+

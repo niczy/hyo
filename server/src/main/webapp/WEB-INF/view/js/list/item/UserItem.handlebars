@@ -1,0 +1,21 @@
+<td style="width:240px;word-break:break-all;">
+    {{name}}
+</td>
+<td style="width:240px;word-break:break-all;">
+    {{realName}}
+</td>
+<td style="width:240px;word-break:break-all;">
+    {{comment}}
+</td>
+<td style="width:150px;word-break:break-all;">
+    {{typeLabel}}
+</td>
+<td style="width:120px;word-break:break-all;">
+{{#if showOp}}
+    <a href="" class="btn-edit-user hover-tip" title="Edit User"><i class="icon-edit"></i></a>
+    <a href="" class="btn-delete-user hover-tip" title="Delte User"><i class="icon-remove"></i></a>
+{{/if}}
+{{#if isMe}}
+    <a href="" class="btn-mod-pw hover-tip" title="Change Password"><i class="icon-lock"></i></a>
+{{/if}}
+</td>

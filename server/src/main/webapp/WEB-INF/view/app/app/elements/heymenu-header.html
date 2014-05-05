@@ -1,0 +1,49 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+<link rel="import" href="../bower_components/core-menu/core-menu.html">
+
+<polymer-element name="heymenu-header"  attributes="">
+  <template>
+    <style>
+      core-menu {
+        margin: 0px 0px 20px 0px;
+        background-color: rgb(130, 0, 0);
+      }
+      core-item {
+        width: 40px;
+        padding: 10px;
+        margin: 10px 10px 0 10px;
+        color: white;
+      }
+      core-item.core-selected {
+        color: rgb(130,0,0);
+        background-color: white;
+      }
+      /* styles for the custom element itself - lowest specificity */
+      :host { display: block; margin: 0px;}
+      /* 
+      style if an ancestor has the different class
+      :host(.different) { } 
+      */
+    </style>
+    <core-menu selected="0">
+      <core-item label="Settings">Order</core-item>
+      <core-item label="Dialog">Menu</core-item>
+      <core-item label="Search">Staff</core-item>
+    </core-menu>
+  </template>
+  <script>
+    Polymer('heymenu-header', {
+      // element is fully prepared
+      ready: function(){ },
+      // instance of the element is created
+      created: function() { },
+      // instance was inserted into the document
+      enteredView: function() { },
+      // instance was removed from the document
+      leftView: function() { },
+      // attribute added, removed or updated
+      attributeChanged: function(attrName, oldVal, newVal) { }
+    });
+  </script>
+</polymer-element>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:paddingTop="50dp"
+    android:stretchColumns="1" >
+
+    <TableRow
+        android:layout_marginTop="5dp"
+        android:gravity="center_vertical" >
+
+        <TextView
+            android:text="@string/user_name"
+            android:width="150dp"
+            android:textAppearance="@style/TextAppearance.Grey"/>
+
+        <EditText
+            android:id="@+id/sp_username"
+            android:layout_marginLeft="10dp"
+            android:drawSelectorOnTop="true"
+            android:cursorVisible="true"
+            android:textCursorDrawable="@null"
+            android:paddingLeft="4dp"
+            android:paddingRight="4dp"
+            android:paddingTop="1.5dp"
+            android:paddingBottom="1.5dp"
+            android:background="@drawable/edit_text_box"/>
+    </TableRow>
+
+    <TableRow
+        android:layout_marginTop="20dp"
+        android:gravity="center_vertical" >
+
+        <TextView
+            android:text="@string/password"
+            android:textAppearance="@style/TextAppearance.Grey" />
+
+        <EditText
+            android:id="@+id/et_password"
+            android:layout_marginLeft="10dp"
+            android:inputType="textPassword"
+            android:textCursorDrawable="@null"
+            android:paddingLeft="4dp"
+            android:paddingRight="4dp"
+            android:paddingTop="1.5dp"
+            android:paddingBottom="1.5dp"
+            android:background="@drawable/edit_text_box"/>
+    </TableRow>
+
+    <TableRow android:layout_marginTop="30dp" >
+
+        <TextView
+            android:text="@string/remember_password"
+            android:textAppearance="@style/TextAppearance.Grey" />
+
+        <CheckBox android:id="@+id/cb_rem_pwd"
+            android:layout_marginLeft="10dp"
+            android:button="@drawable/checkbox"
+            />
+    </TableRow>
+
+</TableLayout>

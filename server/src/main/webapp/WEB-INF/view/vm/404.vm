@@ -1,0 +1,38 @@
+#set( $layout = "layout/static.vm")
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>404(Page Not Found)</title>
+#parse("component/static_head.vm")
+  </head>
+  <body>
+	<!--navigation bar-->
+#parse("component/static_nav.vm")	
+	
+	<div class="error container">
+
+		<div class="row">
+			<div class="col-md-offset-4 col-md-4 text-center">
+				<h1>404 Error</h1>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-md-12 text-center">
+				<h2>The requested URL was not found on this server.</h2>
+			</div>
+		</div>
+		
+		<div class="row hidden-xs">
+			<div class="btn col-xs-offset-3 col-xs-6 col-sm-offset-4 col-sm-4 col-md-offset-5 col-md-2 text-center">
+				<a href="index"><p>Home Page</p></a>
+			</div>
+		</div>
+	</div>
+	
+#parse("component/static_footer.vm")	
+
+	<!-- javascripts -->
+#parse("component/static_script.vm")
+  </body>
+</html>

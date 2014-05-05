@@ -1,0 +1,20 @@
+{
+  "name": "app",
+  "version": "0.0.0",
+  "dependencies": {
+    "sass-bootstrap": "~3.0.0",
+    "platform": "Polymer/platform#master",
+    "polymer": "Polymer/polymer#master",
+    "polymer-elements": "~0.2.3",
+    "polymer-ui-elements": "~0.2.3",
+    "core-elements": "Polymer/core-elements#~0.2.3",
+    "core-layout-grid": "Polymer/core-layout-grid#~0.2.3"
+  },
+  "devDependencies": {},
+  "resolutions": {
+    "platform": "master",
+    "polymer": "master",
+    "core-component-page": "master",
+    "core-action-icons": "master"
+  }
+}

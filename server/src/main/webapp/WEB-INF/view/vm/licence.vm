@@ -1,0 +1,55 @@
+#set( $layout="layout/empty.vm")
+#set($pageName="Lisence")
+
+#if (! $licence)
+<div class="alert">
+    <span>$result.message</span>
+</div>
+
+<form class="form-upload-lisence well" action="licence", method="POST"  enctype="multipart/form-data">
+    <div class="control-group input-lisence">
+        <div class="controls">
+            <label class="control-label">License:</label>
+            <div class="fileupload fileupload-new" data-provides="fileupload">
+                <span class="btn btn-file">
+                    <span class="fileupload-new">Select license</span>
+                    <span class="fileupload-exists">Select license again</span>
+                    <input type="file" />
+                </span>
+                    <span class="fileupload-preview"></span>
+                    <a href="#" class="close fileupload-exists" data-dismiss="fileupload" style="float: none">×</a>
+            </div>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+<ul>
+    <li> Device seed: <span class="alert alert-info">$serial</span> (Used to generate license)</li>
+    <li> Software version: $serverVersion </li>
+    <li> Database version: $dbVersion </li>
+</ul>
+
+#else
+    #if (! $result.success)
+        <div class="alert">
+            <span>$result.message</span>
+        </div>
+    #end
+<div class="well container">
+    <div class="row">
+        <span class="badge badge-info offset1">License type</span>
+        <span>
+        #if ($licence.type == 1)
+           Official 
+        #else
+           Beta 
+        #end
+        </span>
+    </div>
+    <div class="row">
+        <span class="badge badge-info offset1">Device limit</span>
+        <span>$licence.padCount</span>
+    </div>
+</div>
+#end
