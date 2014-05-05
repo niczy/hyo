@@ -61,7 +61,6 @@ public class Menu extends Activity implements OnOrderCountChangedListener {
     private MenuGrid mMenuGrid;
     private ListView mMenuList;
     private MenuListAdapter mMenuListAdapter;
-    private ViewGroup mContainer;
     private int mCurrentOrientation = -1;
 
     @Override
@@ -70,7 +69,6 @@ public class Menu extends Activity implements OnOrderCountChangedListener {
         setContentView(R.layout.activity_menu);
         int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
         getWindow().getDecorView().setSystemUiVisibility(uiOptions);
-        mContainer = (ViewGroup) findViewById(R.id.container);
         mCurrentTable = getIntent().getStringExtra(IntentConsts.TABLE_ID);
         if (!ProfileHolder.getIns().isLogined(this)) {
             Intent intent = new Intent(this, Login.class);
@@ -166,18 +164,6 @@ public class Menu extends Activity implements OnOrderCountChangedListener {
     @Override
     public void onBackPressed() {
 
-    }
-
-    @Override
-    public void onConfigurationChanged(Configuration newConfig) {
-        if (newConfig.orientation == mCurrentOrientation) {
-            return;
-        }
-
-        setRequestedOrientation(newConfig.orientation);
-        mContainer.requestLayout();
-        mCurrentOrientation = newConfig.orientation;
-        Log.d("Menu", "layouting!!");
     }
 
     protected void initData(boolean forseRefresh) {
