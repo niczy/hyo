@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:id="@+id/content_frame"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_toRightOf="@+id/rg_submenu"
+        android:background="@color/light_blue_grey"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:gravity="right"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+            <ImageButton
+                android:id="@+id/sync"
+                android:src="@drawable/btn_sync"
+                android:padding="15dp"
+                android:background="@android:color/transparent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <ListView
+            android:visibility="gone"
+            android:id="@+id/menu_list"
+            android:layout_weight="1"
+            android:layout_width="fill_parent"
+            android:dividerHeight="15dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_height="0dp">
+        </ListView>
+        <com.heymenu.widget.MenuGrid
+            android:id="@+id/menu_grid"
+            android:layout_weight="1"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp">
+        </com.heymenu.widget.MenuGrid>
+
+        <RelativeLayout
+            android:id="@+id/bottom_bar"
+            android:layout_alignParentBottom="true"
+            android:background="@color/light_grey"
+            android:layout_width="match_parent"
+            android:layout_height="60dp">
+
+            <ImageView
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:layout_alignParentTop="true"
+                android:background="@drawable/divider" />
+
+            <TextView
+                android:enabled="false"
+                android:id="@+id/place_order"
+                android:textColor="@color/place_order_color"
+                android:text="Place Order"
+                android:textSize="@dimen/text_large"
+                android:layout_centerInParent="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/order_count"
+                android:text="2"
+                android:visibility="invisible"
+                android:textSize="@dimen/text_regular"
+                android:textColor="@android:color/white"
+                android:background="@drawable/ic_order_count"
+                android:layout_toRightOf="@+id/place_order"
+                android:gravity="center"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="5dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/left_drawer"
+        android:layout_width="130dp"
+        android:layout_gravity="start"
+        android:layout_height="fill_parent"
+        android:background="@color/menu_highlight">
+
+        <TextView
+            android:text="Table Number"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="30dp"
+            android:textSize="@dimen/text_regular"
+            android:gravity="center"
+            android:textColor="@android:color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:text="A232"
+            android:id="@+id/table_name"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="50dp"
+            android:fontFamily="sans-serif-thin"
+            android:textSize="50sp"
+            android:gravity="center"
+            android:textColor="@android:color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <com.heymenu.widget.MenuNav
+            android:id="@+id/category"
+            android:layout_width="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:layout_height="wrap_content" />
+
+
+        <LinearLayout
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <ImageButton
+            android:id="@+id/logout"
+            android:paddingBottom="30dp"
+            android:paddingRight="10dp"
+            android:paddingLeft="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@drawable/btn_logout"
+            android:layout_centerHorizontal="true"
+            android:background="@null" />
+        <TextView
+            android:gravity="center"
+            android:paddingBottom="30dp"
+            android:textColor="@android:color/white"
+            android:text="@string/app_name"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</android.support.v4.widget.DrawerLayout>
