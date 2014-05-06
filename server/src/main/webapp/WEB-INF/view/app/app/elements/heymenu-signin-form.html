@@ -1,27 +1,36 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 
-<polymer-element name="heymenu-button"  attributes="">
+<link rel="import" href="heymenu-input-group.html">
+<link rel="import" href="heymenu-button.html">
+
+<polymer-element name="heymenu-signin-form"  attributes="formWidth labelWidth inputWidth">
   <template>
     <style>
       /* styles for the custom element itself - lowest specificity */
       :host {
-        text-align: center;
-        width: 80px;
+        width: {{formWidth}};
+        margin: 0px auto; 
         display: block; 
-        background: rgb(85, 77, 255);
-        color: white;
-        padding: 7px 8px 7px 8px;
-        border-radius: 3px;
+        text-align: left; 
+      }
+      heymenu-button {
+        float: right;
+        margin: 30px 35px;
+      }
+      heymenu-input-group {
+        padding: 5px 0px 5px 5px;
       }
       /* 
       style if an ancestor has the different class
       :host(.different) { } 
       */
     </style>
-    <span>Submit</span>
+    <heymenu-input-group label="User Name:" labelWidth="{{ labelWidth }}" inputWidth="{{ inputWidth }}"></heymenu-input-group>
+    <heymenu-input-group label="Password:" labelWidth="{{ labelWidth }}" inputWidth="{{ inputWidth }}"></heymenu-input-group>
+    <heymenu-button>Submit</heymenu-button>
   </template>
   <script>
-    Polymer('heymenu-button', {
+    Polymer('heymenu-signin-form', {
       // element is fully prepared
       ready: function(){ },
       // instance of the element is created
