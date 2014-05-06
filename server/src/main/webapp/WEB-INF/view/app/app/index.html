@@ -1,30 +1,24 @@
 <!doctype html>
 <html class="no-js">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Polymer WebApp</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Polymer WebApp</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
-        <!-- build:css styles/main.css -->
-        <link rel="stylesheet" href="styles/main.css">
-        <!-- endbuild-->
+    <link rel="stylesheet" href="styles/global.css">
 
-        <!-- Place your HTML imports here -->
-        <script src="bower_components/platform/platform.js"></script>
-        <link rel="import" href="bower_components/polymer-ajax/polymer-ajax.html">
-        <link rel="import" href="elements/heymenu-app.html">
-    </head>
-    <body unresolved>
-      <div class="container">
-        <heymenu-app></heymenu-app>
-      </div>
-      <script>
-        window.addEventListener('polymer-ready', function(e) {
-          console.log('polymer-ready!');
-        });
-      </script>
-    </body>
+    <!-- Place your HTML imports here -->
+    <script src="bower_components/platform/platform.js"></script>
+    <link rel="import" href="bower_components/polymer-ajax/polymer-ajax.html">
+    <link rel="import" href="elements/heymenu-page.html">
+    <link rel="import" href="elements/heymenu-dish-container.html">
+</head>
+<body unresolved>
+  <heymenu-page>
+    <heymenu-dish-container></heymenu-dish-container>
+  </heymenu-page>
+</body>
 </html>

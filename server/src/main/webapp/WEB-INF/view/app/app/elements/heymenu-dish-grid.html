@@ -1,31 +1,24 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 
-<link rel="import" href="heymenu-header.html">
-
-<polymer-element name="heymenu-page"  attributes="">
+<polymer-element name="heymenu-dish-grid"  attributes="">
   <template>
     <style>
       /* styles for the custom element itself - lowest specificity */
       :host { display: block; }
-      .container {
-        text-align: center;
-        padding: 0px auto;
-        margin: 0px auto;
-        width: 80%;
-        padding: 50px 10px 20px 20px;
+      ::content div {
+        display: inline-block;
+        width: 100px;
+        height: 250px;
       }
       /* 
       style if an ancestor has the different class
       :host(.different) { } 
       */
     </style>
-    <heymenu-header></heymenu-header>
-    <div class="container">
-      <shadow></shadow>
-    </div>
+    <content></content>
   </template>
   <script>
-    Polymer('heymenu-page', {
+    Polymer('heymenu-dish-grid', {
       // element is fully prepared
       ready: function(){ },
       // instance of the element is created
