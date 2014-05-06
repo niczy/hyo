@@ -1,0 +1,27 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+<polymer-element name="heymenu-input" attributes="name id inputWidth" noscript>
+  <template>
+    <style>
+      input {
+        width: {{ inputWidth }};
+        border-width: 0px 0px 2px 0px;
+        border-color: rgb(51, 51, 184);
+        padding: 2px 2px 2px 3px;
+      }
+      input:focus {
+        outline: 0;
+        border-width: 0px 0px 2px 0px;
+        border-color: rgb(51, 51, 184);
+        padding: 2px 2px 2px 3px;
+      }
+      /* styles for the custom element itself - lowest specificity */
+      /* 
+      style if an ancestor has the different class
+      :host(.different) { } 
+      */
+    </style>
+    <input name="{{ name }}" id="{{ id }}">
+  </template>
+  
+</polymer-element>

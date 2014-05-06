@@ -1,0 +1,39 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="heymenu-input.html" />
+
+<polymer-element name="heymenu-input-group"  attributes="label labelWidth inputWidth">
+  <template>
+    <style>
+      /* styles for the custom element itself - lowest specificity */
+      :host {
+        display: block;
+      }
+      div {
+        display: inline-block;
+        width: {{labelWidth}};
+      }
+      /* 
+      style if an ancestor has the different class
+      :host(.different) { } 
+      */
+    </style>
+    <div class="labelContainer">
+      <label for="input">{{ label }}</label>
+    </div>
+    <heymenu-input name="input" id="input" inputWidth="{{ inputWidth }}"></heymenu-input>
+  </template>
+  <script>
+    Polymer('heymenu-input-group', {
+      // element is fully prepared
+      ready: function(){ },
+      // instance of the element is created
+      created: function() { },
+      // instance was inserted into the document
+      enteredView: function() { },
+      // instance was removed from the document
+      leftView: function() { },
+      // attribute added, removed or updated
+      attributeChanged: function(attrName, oldVal, newVal) { }
+    });
+  </script>
+</polymer-element>

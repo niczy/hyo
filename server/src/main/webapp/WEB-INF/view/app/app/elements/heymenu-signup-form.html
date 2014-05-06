@@ -1,0 +1,47 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="heymenu-input-group.html">
+<link rel="import" href="heymenu-button.html">
+
+<polymer-element name="heymenu-signup-form"  attributes="labelWidth formWidth inputWidth">
+  <template>
+    <style>
+      /* styles for the custom element itself - lowest specificity */
+      :host {
+        width: {{formWidth}};
+        margin: 0px auto; 
+        display: block; 
+        text-align: left; 
+      }
+      heymenu-button {
+        float: right;
+        margin: 30px 35px;
+      }
+      heymenu-input-group {
+        padding: 5px 0px 5px 5px;
+      }
+      /* 
+      style if an ancestor has the different class
+      :host(.different) { } 
+      */
+    </style>
+    <heymenu-input-group label="Restaurant Name:" labelWidth="{{ labelWidth }}" inputWidth="{{ inputWidth }}"></heymenu-input-group>
+    <heymenu-input-group label="Restaurant Address:" labelWidth="{{ labelWidth }}" inputWidth="{{ inputWidth }}"></heymenu-input-group>
+    <heymenu-input-group label="User Name:" labelWidth="{{ labelWidth }}" inputWidth="{{ inputWidth }}"></heymenu-input-group>
+    <heymenu-input-group label="Password:" labelWidth="{{ labelWidth }}" inputWidth="{{ inputWidth }}"></heymenu-input-group>
+    <heymenu-button>Submit</heymenu-button>
+  </template>
+  <script>
+    Polymer('heymenu-signup-form', {
+      // element is fully prepared
+      ready: function(){ },
+      // instance of the element is created
+      created: function() { },
+      // instance was inserted into the document
+      enteredView: function() { },
+      // instance was removed from the document
+      leftView: function() { },
+      // attribute added, removed or updated
+      attributeChanged: function(attrName, oldVal, newVal) { }
+    });
+  </script>
+</polymer-element>

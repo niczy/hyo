@@ -1,36 +1,39 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 
-<link rel="import" href="../bower_components/core-menu/core-menu.html">
-
 <polymer-element name="heymenu-header"  attributes="">
   <template>
     <style>
-      core-menu {
-        margin: 0px 0px 20px 0px;
-        background-color: rgb(130, 0, 0);
+       /* styles for the custom element itself - lowest specificity */
+       :host {
+         background: rgb(0,72,202);
+         display: block;
+         margin: 0px;
+         height: 50px;
+       }
+       .appName {
+         font-weight: bold;
+         color: white;
+         font-size: 20px;
+       }
+       .nameContainer {
+         padding: 15px 0px 0px 20px;
+         height: 50px;
+       }
+       a:link {text-decoration:none;}
+       a:visited {text-decoration:none;}
+       a:hover {
+        color: rgba(255, 255, 255, 0.45);
+        text-decoration:none;
       }
-      core-item {
-        width: 40px;
-        padding: 10px;
-        margin: 10px 10px 0 10px;
-        color: white;
-      }
-      core-item.core-selected {
-        color: rgb(130,0,0);
-        background-color: white;
-      }
-      /* styles for the custom element itself - lowest specificity */
-      :host { display: block; margin: 0px;}
+       a:active {text-decoration:none;}
       /* 
       style if an ancestor has the different class
       :host(.different) { } 
       */
     </style>
-    <core-menu selected="0">
-      <core-item label="Settings">Order</core-item>
-      <core-item label="Dialog">Menu</core-item>
-      <core-item label="Search">Staff</core-item>
-    </core-menu>
+    <div class="nameContainer">
+      <a href="/" class="appName">Heymenu</a>
+    </div>
   </template>
   <script>
     Polymer('heymenu-header', {
