@@ -1,6 +1,11 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
+<!-- 
 
-<polymer-element name="heymenu-dish-category"  attributes="">
+attributes:
+
+categories: Json Array.
+-->
+<polymer-element name="heymenu-dish-category"  attributes="categories">
   <template>
     <style>
       /* styles for the custom element itself - lowest specificity */
@@ -19,25 +24,33 @@
       :host(.different) { } 
       */
     </style>
-    <ul>
-      <li>All</li>
-      <li>Soup</li>
-      <li>Desert</li>
-      <li>Entree</li>
+    <ul id="categoryList">
     </ul>
   </template>
   <script>
     Polymer('heymenu-dish-category', {
+
       // element is fully prepared
       ready: function(){ },
       // instance of the element is created
-      created: function() { },
+      created: function() {
+      },
+
       // instance was inserted into the document
       enteredView: function() { },
       // instance was removed from the document
       leftView: function() { },
       // attribute added, removed or updated
-      attributeChanged: function(attrName, oldVal, newVal) { }
+      attributeChanged: function(attrName, oldVal, newVal) { },
+
+      categoriesChanged: function(oldValue, newValue) {
+        var categories = JSON.parse(newValue);
+        for (var i = 0; i < categories.length; i++) {
+          var liEl = document.createElement('li');
+          liEl.innerHTML = categories[i];
+          this.$.categoryList.appendChild(liEl);
+        }
+      }
     });
   </script>
 </polymer-element>
