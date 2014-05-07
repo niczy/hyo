@@ -1,4 +1,5 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/core-ajax/core-ajax.html">
 
 <link rel="import" href="heymenu-input-group.html">
 <link rel="import" href="heymenu-button.html">
@@ -25,9 +26,16 @@
       :host(.different) { } 
       */
     </style>
-    <heymenu-input-group label="User Name:" labelWidth="{{ labelWidth }}" inputWidth="{{ inputWidth }}"></heymenu-input-group>
-    <heymenu-input-group label="Password:" labelWidth="{{ labelWidth }}" inputWidth="{{ inputWidth }}"></heymenu-input-group>
-    <heymenu-button>Submit</heymenu-button>
+    <heymenu-input-group value={{username}} id="username" label="User Name:" labelWidth="{{ labelWidth }}" inputWidth="{{ inputWidth }}"></heymenu-input-group>
+    <heymenu-input-group value={{password}} id="password" label="Password:" labelWidth="{{ labelWidth }}" inputWidth="{{ inputWidth }}"></heymenu-input-group>
+    <core-ajax
+      id="ajax"
+      url="/api/login"
+      method="POST"
+      params='{"name": "{{username}}", "password": "{{password}}"}' 
+    >
+    </core-ajax>
+    <heymenu-button on-click={{onLogin}}>Submit</heymenu-button>
   </template>
   <script>
     Polymer('heymenu-signin-form', {
@@ -40,7 +48,14 @@
       // instance was removed from the document
       leftView: function() { },
       // attribute added, removed or updated
-      attributeChanged: function(attrName, oldVal, newVal) { }
+      attributeChanged: function(attrName, oldVal, newVal) { },
+
+      onLogin: function() {
+        console.log(this.username);
+        console.log(this.password);
+        console.log('login clicked');
+        this.$.ajax.go();
+      }
     });
   </script>
 </polymer-element>
