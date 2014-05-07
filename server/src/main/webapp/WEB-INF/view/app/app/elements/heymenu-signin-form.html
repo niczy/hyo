@@ -33,6 +33,8 @@
       url="/api/login"
       method="POST"
       params='{"name": "{{username}}", "password": "{{password}}"}' 
+      on-core-response={{handleResponse}}
+      on-core-error={{handleError}}
     >
     </core-ajax>
     <heymenu-button on-click={{onLogin}}>Submit</heymenu-button>
@@ -55,6 +57,13 @@
         console.log(this.password);
         console.log('login clicked');
         this.$.ajax.go();
+      },
+      handleResponse: function(response) {
+        window.location = '/app/app/index.html';
+      },
+
+      handleError: function(response) {
+        console.log(response);
       }
     });
   </script>
