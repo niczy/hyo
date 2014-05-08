@@ -1,21 +1,89 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 
+<link rel="import" href="heymenu-dish-item.html">
+
 <polymer-element name="heymenu-dish-grid"  attributes="">
   <template>
     <style>
       /* styles for the custom element itself - lowest specificity */
       :host { display: block; }
-      ::content div {
+      .pin {
+        width: 150px;
         display: inline-block;
-        width: 100px;
-        height: 250px;
+        background: #FEFEFE;
+        border: 2px solid #FAFAFA;
+        box-shadow: 0 1px 2px rgba(34, 25, 25, 0.4);
+        margin: 0 2px 15px;
+        -webkit-column-break-inside: avoid;
+        -moz-column-break-inside: avoid;
+        column-break-inside: avoid;
+        padding: 15px;
+        padding-bottom: 5px;
+        background: -webkit-linear-gradient(45deg, #FFF, #F9F9F9);
+          
+        -webkit-transition: all .2s ease;
+        -moz-transition: all .2s ease;
+        -o-transition: all .2s ease;
+        transition: all .2s ease;
+      }
+      #columns {
+        -webkit-column-count: 3;
+        -webkit-column-gap: 10px;
+        -webkit-column-fill: auto;
+        -moz-column-count: 3;
+        -moz-column-gap: 10px;
+        -moz-column-fill: auto;
+        column-count: 3;
+        column-gap: 15px;
+        column-fill: auto;
+      }
+      @media (min-width: 230px) {
+        #columns {
+          -webkit-column-count: 1;
+          -moz-column-count: 1;
+          column-count: 1;
+        }
+      }
+      @media (min-width: 620px) {
+        #columns {
+          -webkit-column-count: 2;
+          -moz-column-count: 2;
+          column-count: 2;
+        }
+      }
+      @media (min-width: 910px) {
+        #columns {
+          -webkit-column-count: 3;
+          -moz-column-count: 3;
+          column-count: 3;
+        }
+      }
+      @media (min-width: 1100px) {
+        #columns {
+          -webkit-column-count: 4;
+          -moz-column-count: 4;
+          column-count: 4;
+        }
+      }
+
+      .pin:hover {
+        opacity: 1.0;
       }
       /* 
       style if an ancestor has the different class
       :host(.different) { } 
       */
     </style>
-    <content></content>
+    <div id="columns">
+      <heymenu-dish-item class="pin"></heymenu-dish-item>
+      <heymenu-dish-item class="pin"></heymenu-dish-item>
+      <heymenu-dish-item class="pin"></heymenu-dish-item>
+      <heymenu-dish-item class="pin"></heymenu-dish-item>
+      <heymenu-dish-item class="pin"></heymenu-dish-item>
+      <heymenu-dish-item class="pin"></heymenu-dish-item>
+      <heymenu-dish-item class="pin"></heymenu-dish-item>
+      <heymenu-dish-item class="pin"></heymenu-dish-item>
+    </div>
   </template>
   <script>
     Polymer('heymenu-dish-grid', {

@@ -18,17 +18,30 @@ categories: Json Array.
       }
       li {
         padding: 10px 0px;
+        color: rgb(104, 106, 119)
       }
-      /* 
+      li:hover {
+        background: rgba(173, 166, 166, 0.22);
+      }
+      .selected {
+        color: black;
+        background: rgba(0, 0, 0, 0.22);
+      }
+     /* 
       style if an ancestor has the different class
       :host(.different) { } 
       */
     </style>
     <ul id="categoryList">
+      <template repeat="{{ category in categoriesObj }}">
+        <li on-click={{selectCategory}}>{{ category }}</li>
+      </template>
     </ul>
   </template>
   <script>
     Polymer('heymenu-dish-category', {
+
+      selectedEl: undefined, 
 
       // element is fully prepared
       ready: function(){ },
@@ -44,12 +57,15 @@ categories: Json Array.
       attributeChanged: function(attrName, oldVal, newVal) { },
 
       categoriesChanged: function(oldValue, newValue) {
-        var categories = JSON.parse(newValue);
-        for (var i = 0; i < categories.length; i++) {
-          var liEl = document.createElement('li');
-          liEl.innerHTML = categories[i];
-          this.$.categoryList.appendChild(liEl);
+        this.categoriesObj = JSON.parse(newValue);
+      },
+      selectCategory: function(e, detail, sender) {
+        if (this.selectedEl) {
+          this.selectedEl.classList.remove('selected');
         }
+        this.selectedEl = e.toElement;
+        e.toElement.classList.add('selected');
+        console.log('Category clicked');
       }
     });
   </script>

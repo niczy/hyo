@@ -19,6 +19,17 @@
         width: 80%;
         border: solid;
       }
+      @media (max-width: 530px) {
+        heymenu-dish-category {
+          display: none;
+        }
+        heymenu-dish-grid {
+          float: left;
+          width: 95%;
+          border: solid;
+        }
+      }
+
       /* 
       style if an ancestor has the different class
       :host(.different) { } 
@@ -26,11 +37,6 @@
     </style>
     <heymenu-dish-category categories = '["All", "Soup", "Desert"]'></heymenu-dish-category>
     <heymenu-dish-grid>
-      <div class="pin">Test</div>
-      <div class="pin">Test2</div>
-      <div class="pin">Test</div>
-      <div class="pin">Test2</div>
-      <div class="pin">Test</div>
     </heymenu-dish-grid>
   </template>
   <script>
