@@ -1,6 +1,6 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="heymenu-dish-category.html">
-<link rel="import" href="heymenu-dish-grid.html">
+<link rel="import" href="heymenu-pin-layout.html">
 
 <polymer-element name="heymenu-dish-container"  attributes="">
   <template>
@@ -36,8 +36,16 @@
       */
     </style>
     <heymenu-dish-category categories = '["All", "Soup", "Desert"]'></heymenu-dish-category>
-    <heymenu-dish-grid>
-    </heymenu-dish-grid>
+    <heymenu-pin-layout>
+      <heymenu-dish-item class="pin"></heymenu-dish-item>
+      <heymenu-dish-item class="pin"></heymenu-dish-item>
+      <heymenu-dish-item class="pin"></heymenu-dish-item>
+      <heymenu-dish-item class="pin"></heymenu-dish-item>
+      <heymenu-dish-item class="pin"></heymenu-dish-item>
+      <heymenu-dish-item class="pin"></heymenu-dish-item>
+      <heymenu-dish-item class="pin"></heymenu-dish-item>
+      <heymenu-dish-item class="pin"></heymenu-dish-item>
+    </heymenu-pin-layout>
   </template>
   <script>
     Polymer('heymenu-dish-container', {

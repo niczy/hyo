@@ -2,18 +2,18 @@
 
 <link rel="import" href="heymenu-dish-item.html">
 
-<polymer-element name="heymenu-dish-grid"  attributes="">
+<polymer-element name="heymenu-pin-layout"  attributes="">
   <template>
     <style>
       /* styles for the custom element itself - lowest specificity */
       :host { display: block; }
-      .pin {
+      ::content .pin {
         width: 150px;
         display: inline-block;
         background: #FEFEFE;
         border: 2px solid #FAFAFA;
         box-shadow: 0 1px 2px rgba(34, 25, 25, 0.4);
-        margin: 0 2px 15px;
+        margin: 0px auto;
         -webkit-column-break-inside: avoid;
         -moz-column-break-inside: avoid;
         column-break-inside: avoid;
@@ -51,14 +51,14 @@
           column-count: 2;
         }
       }
-      @media (min-width: 910px) {
+      @media (min-width: 1000px) {
         #columns {
           -webkit-column-count: 3;
           -moz-column-count: 3;
           column-count: 3;
         }
       }
-      @media (min-width: 1100px) {
+      @media (min-width: 1200px) {
         #columns {
           -webkit-column-count: 4;
           -moz-column-count: 4;
@@ -75,18 +75,11 @@
       */
     </style>
     <div id="columns">
-      <heymenu-dish-item class="pin"></heymenu-dish-item>
-      <heymenu-dish-item class="pin"></heymenu-dish-item>
-      <heymenu-dish-item class="pin"></heymenu-dish-item>
-      <heymenu-dish-item class="pin"></heymenu-dish-item>
-      <heymenu-dish-item class="pin"></heymenu-dish-item>
-      <heymenu-dish-item class="pin"></heymenu-dish-item>
-      <heymenu-dish-item class="pin"></heymenu-dish-item>
-      <heymenu-dish-item class="pin"></heymenu-dish-item>
+      <content></content>      
     </div>
   </template>
   <script>
-    Polymer('heymenu-dish-grid', {
+    Polymer('heymenu-pin-layout', {
       // element is fully prepared
       ready: function(){ },
       // instance of the element is created

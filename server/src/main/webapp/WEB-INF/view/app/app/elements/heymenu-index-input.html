@@ -1,29 +1,20 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="heymenu-input.html">
 
-<link rel="import" href="heymenu-header.html">
 
-<polymer-element name="heymenu-page"  attributes="">
+<polymer-element name="heymenu-index-input" extends="heymenu-input" attributes="">
   <template>
     <style>
       /* styles for the custom element itself - lowest specificity */
       :host { display: block; }
-      .container {
-        text-align: center;
-        padding: 0px auto;
-        margin: 0px auto;
-      }
       /* 
       style if an ancestor has the different class
       :host(.different) { } 
       */
     </style>
-    <heymenu-header></heymenu-header>
-    <div class="container">
-      <content></content>
-    </div>
   </template>
   <script>
-    Polymer('heymenu-page', {
+    Polymer('heymenu-index-input', {
       // element is fully prepared
       ready: function(){ },
       // instance of the element is created
