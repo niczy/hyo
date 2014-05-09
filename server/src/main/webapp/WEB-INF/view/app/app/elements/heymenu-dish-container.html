@@ -10,13 +10,13 @@
         width: 100%; 
       }
       heymenu-dish-category {
-        float: left;
-        width: 10%;
+        width: 100px;
+        display: inline-block;
         border: solid;
       }
       heymenu-dish-grid {
-        float: left;
-        width: 80%;
+        width: 800px;
+        display: inline-block;
         border: solid;
       }
       @media (max-width: 530px) {
@@ -29,13 +29,21 @@
           border: solid;
         }
       }
+      td {
+        vertical-align: top;
+      }
 
       /* 
       style if an ancestor has the different class
       :host(.different) { } 
       */
     </style>
+    <table>
+      <tr>
+        <td>
     <heymenu-dish-category categories = '["All", "Soup", "Desert"]'></heymenu-dish-category>
+  </td>
+<td>
     <heymenu-pin-layout>
       <heymenu-dish-item class="pin"></heymenu-dish-item>
       <heymenu-dish-item class="pin"></heymenu-dish-item>
@@ -46,6 +54,9 @@
       <heymenu-dish-item class="pin"></heymenu-dish-item>
       <heymenu-dish-item class="pin"></heymenu-dish-item>
     </heymenu-pin-layout>
+    </td>
+      </tr>
+    </table>
   </template>
   <script>
     Polymer('heymenu-dish-container', {
