@@ -8,7 +8,6 @@
       /* styles for the custom element itself - lowest specificity */
       :host { display: block; }
       ::content .pin {
-        float: left;
         width: 150px;
         display: inline-block;
         background: #FEFEFE;
@@ -28,13 +27,13 @@
         transition: all .2s ease;
       }
       #columns {
-        -webkut-column-width: 200px;
+        -webkit-column-width: 200px;
         -webkit-column-gap: 10px;
         -webkit-column-fill: auto;
-        -moz-column-count: 3;
+        -moz-column-width: 200px;
         -moz-column-gap: 10px;
         -moz-column-fill: auto;
-        column-count: 3;
+        column-width: 200px;
         column-gap: 10px;
         column-fill: auto;
       }
