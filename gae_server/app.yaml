@@ -4,5 +4,10 @@ api_version: 1
 threadsafe: true
 
 handlers:
+- url: /app
+  static_dir: static/app/app 
+
 - url: /.*
   script: heymenu.application
+
+
