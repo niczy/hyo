@@ -2,7 +2,7 @@
 
 <link rel="import" href="heymenu-header.html">
 
-<polymer-element name="heymenu-page"  attributes="">
+<polymer-element name="heymenu-page"  attributes="actions">
   <template>
     <style>
       /* styles for the custom element itself - lowest specificity */
@@ -17,7 +17,7 @@
       :host(.different) { } 
       */
     </style>
-    <heymenu-header></heymenu-header>
+    <heymenu-header actions="{{actions}}"></heymenu-header>
     <div class="container">
       <content></content>
     </div>

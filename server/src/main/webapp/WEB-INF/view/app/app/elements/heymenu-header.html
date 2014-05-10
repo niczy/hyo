@@ -1,6 +1,6 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 
-<polymer-element name="heymenu-header"  attributes="">
+<polymer-element name="heymenu-header"  attributes="actions">
   <template>
     <style>
        /* styles for the custom element itself - lowest specificity */
@@ -19,6 +19,17 @@
          padding: 15px 0px 0px 20px;
          height: 50px;
        }
+       .actions {
+         color: white;
+         list-style-type: none;
+         float: right;
+         vertical-align: center;
+         margin-right: 20px;
+         display: inline-block;
+       }
+       .actions li a {
+         color: white;
+       }
        a:link {text-decoration:none;}
        a:visited {text-decoration:none;}
        a:hover {
@@ -33,10 +44,20 @@
     </style>
     <div class="nameContainer">
       <a href="/" class="appName">Heymenu</a>
+      <template repeat="{{action in actionItems}}">
+        <ul class="actions">
+          <li>
+            <a href="{{action.url}}">
+              {{action.name}}
+            </a>
+          </li>
+        </ul>
+      </template>
     </div>
   </template>
   <script>
     Polymer('heymenu-header', {
+      actionItems: undefined,
       // element is fully prepared
       ready: function(){ },
       // instance of the element is created
@@ -46,7 +67,12 @@
       // instance was removed from the document
       leftView: function() { },
       // attribute added, removed or updated
-      attributeChanged: function(attrName, oldVal, newVal) { }
+      attributeChanged: function(attrName, oldVal, newVal) { },
+
+      actionsChanged: function(oldVal, newVal) {
+        this.actionItems= JSON.parse(newVal);
+        console.log(this.actionItems);
+      }
     });
   </script>
 </polymer-element>
