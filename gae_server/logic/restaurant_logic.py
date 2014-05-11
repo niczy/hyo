@@ -1,6 +1,6 @@
 from model.restaurant import Restaurant
 
-def create(name):
+def add(name):
   restaurant = Restaurant(name = name)
   restaurant.put()
   return restaurant;

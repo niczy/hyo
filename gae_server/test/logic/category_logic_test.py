@@ -9,7 +9,7 @@ from logic.exceptions import RestaurantNotExistError
 class CategoryLogicTest(ModelTestCase):
 
   def test_add_and_get_categories(self):
-    restaurant = restaurant_logic.create('restaurant') 
+    restaurant = restaurant_logic.add('restaurant') 
     category_logic.add(restaurant.key, "Category 1")
     category_logic.add(restaurant.key, "Cateogyr 2")
     categoris = category_logic.get_all_by_restaurant_key(restaurant.key)
