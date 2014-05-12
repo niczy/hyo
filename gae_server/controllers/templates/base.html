@@ -1,0 +1,25 @@
+<!doctype html>
+<html class="no-js">
+<head>
+  {% block head %}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{% block title %}{% endblock %}</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+    <link rel="stylesheet" href="/app/styles/global.css">
+
+    <!-- Place your HTML imports here -->
+    <script src="/app/bower_components/platform/platform.js"></script>
+    <link rel="import" href="/app/bower_components/polymer-ajax/polymer-ajax.html">
+    <link rel="import" href="/app/elements/heymenu-page.html">
+    <link rel="import" href="/app/elements/heymenu-restaurant-container.html">
+  {% endblock %}
+</head>
+<body unresolved>
+  {% block body %}
+  {% endblock %}
+</body>
+</html>

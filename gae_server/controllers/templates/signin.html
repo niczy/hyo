@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}Hey!menu{% endblock %}
+
+{% block head %}
+  {{ super() }}
+  <link rel="import" href="/app/elements/heymenu-signin-form.html">
+{% endblock %}
+
+{% block body %}
+  <heymenu-page>
+    <heymenu-signin-form formWidth="450px" labelWidth="200px" inputWidth="200px"></heymenu-signup-form>
+  </heymenu-page>
+{% endblock %}

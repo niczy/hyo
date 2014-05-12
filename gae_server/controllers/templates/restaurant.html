@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block head %}
+  {{ super() }}
+  <link rel="import" href="/app/elements/heymenu-dish-container.html">
+{% endblock %}
+
+{% block title %}Hey!menu{% endblock %}
+
+{% block body %}
+  <heymenu-page>
+    <heymenu-dish-container></heymenu-dish-container>
+  </heymenu-page>
+{% endblock %}
