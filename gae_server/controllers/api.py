@@ -7,6 +7,6 @@ class Restaurant(webapp2.RequestHandler):
 
   def post(self):
     restaurant_name = self.request.get('name')
-    restaurant = restaurant_logic.add(restaurant_name)
+    restaurant = restaurant_logic.add(restaurant_name, restaurant_name)
     self.response.headers['Content-Type'] = 'application/json'
     self.response.out.write(json_encoder.encode(restaurant))

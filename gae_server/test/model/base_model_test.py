@@ -10,6 +10,6 @@ class ModelTestCase(unittest.TestCase):
     self.testbed.init_datastore_v3_stub()
     self.testbed.init_memcache_stub()
 
-  def testDown(self):
+  def tearDown(self):
     self.testbed.deactivate()
 
