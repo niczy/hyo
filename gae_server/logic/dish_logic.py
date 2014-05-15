@@ -7,6 +7,12 @@ def get_all_by_category_key(category_key):
   check_category_key(category_key)
   return Dish.query(ancestor = category_key).fetch()
 
+def get_all_by_restaurant_uid(reataurant_uid):
+  '''
+    TODO: list all dishes
+  '''
+  pass
+
 def add(category_key, name):
   check_category_key(category_key)
   dish = Dish(parent = category_key, name = name)
