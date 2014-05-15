@@ -13,12 +13,18 @@ from exceptions import RestaurantExistError
 def add(uid, name):
   if get_by_id(uid):
     raise RestaurantExistError(uid)
-  restaurant = Restaurant(id = uid, name = name)
+  restaurant = Restaurant(id = uid, uid = uid, name = name)
   restaurant.put()
   return restaurant;
 
 def get_all():
   return Restaurant.query().fetch()
+
+'''
+  Checks if given uid exists.
+'''
+def check_uid_exist(uid):
+  return get_by_id(uid) != None
 
 def get_by_name(name):
   return Restaurant.query(Restaurant.name == name).fetch()

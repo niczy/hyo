@@ -12,7 +12,8 @@ class RestaurantLogicTestCase(ModelTestCase):
     restaurant_logic.add('FuLinMen', 'restaurant')
     restaurants = restaurant_logic.get_all()
     self.assertEqual(1, len(restaurants))
-    self.assertEqual('{"name": "restaurant"}', json_encoder.encode(restaurants[0]))
+    self.assertEqual('{"name": "restaurant", "uid": "FuLinMen"}',
+        json_encoder.encode(restaurants[0]))
 
   def testGetByName(self):
     restaurant_logic.add('fulinmen', 'fulinmen') 
@@ -28,6 +29,11 @@ class RestaurantLogicTestCase(ModelTestCase):
 
     restaurant = restaurant_logic.get_by_id('notexist')
     self.assertIsNone(restaurant)
+
+  def testGetById(self):
+    restaurant_logic.add('fulinmenid', 'fulinmen') 
+    self.assertTrue(restaurant_logic.check_uid_exist('fulinmenid'))
+    self.assertFalse(restaurant_logic.check_uid_exist('fulinmen'))
 
   def testAddingRestaurantWhenIdExis(self):
     restaurant_logic.add('fulinmen', 'fulinmen')

@@ -1,5 +1,6 @@
 import unittest
 import webtest
+from google.appengine.ext import ndb
 from google.appengine.api import memcache
 from google.appengine.ext import testbed
 
@@ -14,6 +15,7 @@ class BaseAppTest(unittest.TestCase):
     self.testbed.init_datastore_v3_stub()
     self.testbed.init_memcache_stub()
     self.testapp = webtest.TestApp(application)
+    ndb.get_context().clear_cache()
 
   def testHelloWorld(self):
     response = self.testapp.get('/')

@@ -8,4 +8,8 @@ the user needs to pick another uid.
 '''
 class Restaurant(ndb.Model):
 
+  '''
+    UID, the same as the entity key. Used to serilized to json response.
+  '''
+  uid = ndb.StringProperty()
   name = ndb.StringProperty()
