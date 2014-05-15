@@ -1,6 +1,9 @@
 import unittest
+from google.appengine.ext import ndb
 from google.appengine.api import memcache
 from google.appengine.ext import testbed
+
+from model.restaurant import Restaurant
 
 class ModelTestCase(unittest.TestCase):
 
@@ -9,6 +12,7 @@ class ModelTestCase(unittest.TestCase):
     self.testbed.activate()
     self.testbed.init_datastore_v3_stub()
     self.testbed.init_memcache_stub()
+    ndb.get_context().clear_cache()
 
   def tearDown(self):
     self.testbed.deactivate()

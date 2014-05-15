@@ -9,7 +9,7 @@ from logic.exceptions import CategoryNotExistError
 class DishLogicTest(ModelTestCase):
 
   def test_add_and_get_dishes(self):
-    restaurant = restaurant_logic.add('FulinMen5', 'restaurant')
+    restaurant = restaurant_logic.add('FulinMen', 'restaurant')
     category = category_logic.add(restaurant.key, "category")
     dish_logic.add(category.key, 'Dish1')
     dish_logic.add(category.key, 'Dish2')
