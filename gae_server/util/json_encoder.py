@@ -6,12 +6,12 @@ class JsonEncoder(json.JSONEncoder):
 
   def default(self, o):
     if isinstance(o, ndb.Key):
-      o = o.get()
-
-    if isinstance(o, ndb.Model):
+      return o.urlsafe()
+    elif  isinstance(o, ndb.Model):
       return o.to_dict()
     elif isinstance(o, (datatime, data, time)):
       return str(o)
+    return o
 
 json_encoder = JsonEncoder()
 
