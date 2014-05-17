@@ -2,12 +2,20 @@ import webapp2
 import json
 
 from google.appengine.ext import ndb
+from logic import category_logic
 from logic import restaurant_logic
 from util import json_encoder
 
+
+'''
+ Request parameter keys.
+'''
+RESTAURANT_UID = 'uid'
+NAME = 'name'
+
 class BaseApiHandler(webapp2.RequestHandler):
 
-  def sendResponse(self, resp):
+  def send_response(self, resp):
     self.response.headers['Content-Type'] = 'application/json'
     if isinstance(resp, str):
       self.response.out.write(resp)
@@ -19,20 +27,32 @@ class BaseApiHandler(webapp2.RequestHandler):
 class Restaurant(BaseApiHandler):
 
   def post(self):
-    restaurant_name = self.request.get('name')
-    restaurant_uid = self.request.get('uid')
+    restaurant_name = self.request.get(NAME)
+    restaurant_uid = self.request.get(RESTAURANT_UID)
     restaurant = restaurant_logic.add(restaurant_uid, restaurant_name)
-    self.sendResponse(restaurant)
+    self.send_response(restaurant)
 
 class CheckRestaurantUid(BaseApiHandler):
 
   def get(self):
-    restaurant_uid = self.request.get('uid')
+    restaurant_uid = self.request.get(RESTAURANT_UID)
     result = {"exist": restaurant_logic.check_uid_exist(restaurant_uid)}
-    self.sendResponse(result)
+    self.send_response(result)
+
+class Category(BaseApiHandler):
+
+  '''
+    TODO: test
+  '''
+  def post(self):
+    restaurant_uid = self.request.get(RESTAURANT_UID)
+    category_name = self.request.get(NAME)
+    category = category_logic.add(restaurant_uid, category_name)
+    self.send_response(category)
 
 class Dish(webapp2.RequestHandler):
 
+  "TODO: add get all dishes."
   def get(self):
     pass
 

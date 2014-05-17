@@ -24,6 +24,14 @@ class ApiTest(BaseAppTest):
     self.assertEqual(json.dumps(response.json),
         '{"exist": true}')
 
-
+  def testAddCategory(self):
+    restaurant_uid = 'uid'
+    category_name = 'name'
+    restaurant_logic.add(restaurant_uid, 'restaurant_name')
+    params = {'uid': restaurant_uid, 'name': category_name}
+    response = self.testapp.post('/api/category', params)
+    self.assertEqual(response.status_int, 200)
+    self.assertEqual(json.dumps(response.json),
+        '{"restaurant_key": {"name": "restaurant_name", "uid": "uid"}, "name": "name"}')
 
 

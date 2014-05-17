@@ -12,8 +12,13 @@ class CategoryLogicTest(ModelTestCase):
     restaurant = restaurant_logic.add('FulinMen', 'restaurant') 
     category_logic.add(restaurant.key, "Category 1")
     category_logic.add(restaurant.key, "Cateogyr 2")
-    categoris = category_logic.get_all_by_restaurant_key(restaurant.key)
-    self.assertEqual(2, len(categoris))
+    categories = category_logic.get_all_by_restaurant_key(restaurant.key)
+    self.assertEqual(2, len(categories))
+
+    self.assertIsNotNone(category_logic.add('FulinMen', 'Category 3'))
+    category_logic.add('FulinMen', 'Category 4')
+    categories = category_logic.get_all_by_restaurant_key(restaurant.key)
+    self.assertEqual(4, len(categories))
 
   def test_get_category_not_exist(self):
     try:

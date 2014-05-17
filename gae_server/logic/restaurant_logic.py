@@ -1,3 +1,5 @@
+
+from logic import check_get_restaurant_by_uid
 from model.restaurant import Restaurant
 from exceptions import RestaurantExistError
 
@@ -11,8 +13,9 @@ from exceptions import RestaurantExistError
     http://domain/uid
 '''
 def add(uid, name):
-  if get_by_id(uid):
-    raise RestaurantExistError(uid)
+  "TODO: normalize uid to lower case"
+  if get_by_id(uid) != None:
+    raise RestaurantExistError("uid = %s" % uid)
   restaurant = Restaurant(id = uid, uid = uid, name = name)
   restaurant.put()
   return restaurant;

@@ -14,6 +14,9 @@ class EntityExistError(Exception):
   def __str__(self):
     return repr(self.entity_key)
 
+class InvalidInputError(Exception):
+  pass
+
 
 
 '''
