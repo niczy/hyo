@@ -1,8 +1,10 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="heymenu-dish-category.html">
 <link rel="import" href="heymenu-pin-layout.html">
+<link rel="import" href="heymenu-dish-item.html">
+<link rel="import" href="heymenu-dish-editor.html">
 
-<polymer-element name="heymenu-dish-container"  attributes="">
+<polymer-element name="heymenu-dish-container"  attributes="dishes categories restaurant_uid">
   <template>
     <style>
       /* styles for the custom element itself - lowest specificity */
@@ -32,6 +34,12 @@
       td {
         vertical-align: top;
       }
+      .hidden {
+        display: none;
+      }
+      #newDishButton {
+        display: block;
+      }
 
       /* 
       style if an ancestor has the different class
@@ -41,27 +49,35 @@
     <table>
       <tr>
         <td>
-    <heymenu-dish-category categories = '["All", "Soup", "Desert"]'></heymenu-dish-category>
-  </td>
-<td>
-    <heymenu-pin-layout>
-      <heymenu-dish-item class="pin"></heymenu-dish-item>
-      <heymenu-dish-item class="pin"></heymenu-dish-item>
-      <heymenu-dish-item class="pin"></heymenu-dish-item>
-      <heymenu-dish-item class="pin"></heymenu-dish-item>
-      <heymenu-dish-item class="pin"></heymenu-dish-item>
-      <heymenu-dish-item class="pin"></heymenu-dish-item>
-      <heymenu-dish-item class="pin"></heymenu-dish-item>
-      <heymenu-dish-item class="pin"></heymenu-dish-item>
-    </heymenu-pin-layout>
-    </td>
+          <heymenu-dish-category
+            categories = '{{categories}}'
+            restaurant_uid = '{{restaurant_uid}}'>
+          </heymenu-dish-category>
+          <heymenu-button id="newDishButton" on-click="{{onNewDish}}">
+            New Dish
+          </heymenu-button>
+        </td>
+        <td>
+          <heymenu-dish-editor id="dishEditor" class="hidden" restaurant_uid = {{restaurant_uid}} class="pin"></heymenu-dish-editor>
+          <heymenu-pin-layout>
+            <template repeat="{{ dish in dishesObj }}">
+              <heymenu-dish-item dish = {{dish}} class="pin"></heymenu-dish-item>
+            </template>
+          </heymenu-pin-layout>
+        </td>
       </tr>
     </table>
   </template>
   <script>
     Polymer('heymenu-dish-container', {
       // element is fully prepared
-      ready: function(){ },
+      ready: function() {
+        var container = this;
+        this.$.dishEditor.addEventListener('dish-created', function(e) {
+          var dishes = [e.detail];
+          container.dishesObj = dishes.concat(container.dishesObj);
+        });
+      },
       // instance of the element is created
       created: function() { },
       // instance was inserted into the document
@@ -69,7 +85,14 @@
       // instance was removed from the document
       leftView: function() { },
       // attribute added, removed or updated
-      attributeChanged: function(attrName, oldVal, newVal) { }
+      attributeChanged: function(attrName, oldVal, newVal) { },
+      dishesChanged: function(oldValue, newValue) {
+        this.dishesObj = JSON.parse(newValue);
+      },
+      onNewDish: function() {
+        this.$.dishEditor.classList.toggle('hidden');
+        this.$.newDishButton.classList.toggle('hidden');
+      }
     });
   </script>
 </polymer-element>

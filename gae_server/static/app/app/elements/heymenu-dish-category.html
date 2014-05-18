@@ -1,11 +1,11 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/core-ajax/core-ajax.html">
 <!-- 
-
 attributes:
-
-categories: Json Array.
+  restaurant_uid: The restaurant uid.
+  categories: Json Array.
 -->
-<polymer-element name="heymenu-dish-category"  attributes="categories">
+<polymer-element name="heymenu-dish-category"  attributes="restaurant_uid categories">
   <template>
     <style>
       /* styles for the custom element itself - lowest specificity */
@@ -27,6 +27,12 @@ categories: Json Array.
         color: black;
         background: rgba(0, 0, 0, 0.22);
       }
+      #categoryInput {
+        width: 70px;
+      }
+      .hidden {
+        display: none;
+      }
      /* 
       style if an ancestor has the different class
       :host(.different) { } 
@@ -34,14 +40,28 @@ categories: Json Array.
     </style>
     <ul id="categoryList">
       <template repeat="{{ category in categoriesObj }}">
-        <li on-click={{selectCategory}}>{{ category }}</li>
+        <li on-click={{selectCategory}}>{{ category.name }}</li>
       </template>
+      <li id="addCategory">
+        <input id="categoryInput" class="hidden" value={{category_name}}></input>
+        <span id=categoryPlus on-click={{onNewCategory}}>+</span>
+      </li>
     </ul>
+    <core-ajax
+      id = "createCategory"
+      url = "/api/category"
+      handleAs = "json"
+      method = "POST"
+      params = '{"uid": "{{restaurant_uid}}", "name": "{{category_name}}"}'
+      on-core-response = {{onCategoryCreated}}
+    ></core-ajax>
   </template>
   <script>
     Polymer('heymenu-dish-category', {
 
       selectedEl: undefined, 
+
+      shouldAddCategory: false,
 
       // element is fully prepared
       ready: function(){ },
@@ -66,6 +86,17 @@ categories: Json Array.
         this.selectedEl = e.toElement;
         e.toElement.classList.add('selected');
         console.log('Category clicked');
+      },
+      onNewCategory: function() {
+        if (this.shouldAddCategory) {
+          this.$.createCategory.go();
+        }
+        console.log('On New category clicked');
+        this.$.categoryInput.classList.toggle('hidden');
+        this.shouldAddCategory = !this.shouldAddCategory;
+      },
+      onCategoryCreated: function(resp) {
+        this.categoriesObj.push(resp.detail.response)
       }
     });
   </script>

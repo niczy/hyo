@@ -1,4 +1,5 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/core-ajax/core-ajax.html">
 <link rel="import" href="heymenu-input-group.html">
 <link rel="import" href="heymenu-button.html">
 
@@ -24,9 +25,17 @@
       :host(.different) { } 
       */
     </style>
-    <heymenu-input-group label="Restaurant Name:" labelWidth="{{ labelWidth }}" inputWidth="{{ inputWidth }}"></heymenu-input-group>
+    <heymenu-input-group label="Restaurant Name:" labelWidth="{{ labelWidth }}" inputWidth="{{ inputWidth }}" value={{name}}></heymenu-input-group>
+    <heymenu-input-group label="Restaurant Uid:" labelWidth="{{ labelWidth }}" inputWidth="{{ inputWidth }}" value={{uid}}></heymenu-input-group>
     <heymenu-input-group label="Restaurant Address:" labelWidth="{{ labelWidth }}" inputWidth="{{ inputWidth }}"></heymenu-input-group>
-    <heymenu-button>Submit</heymenu-button>
+    <core-ajax
+      id="newRestaurant"
+      method="POST"
+      handleAs="json"
+      params = '{"uid": "{{uid}}", "name": "{{name}} "}'
+      on-core-response = "{{onRestaurantCreated}}" 
+      url = "/api/restaurant"></core-ajax>
+    <heymenu-button on-click="{{onNewRestaurant}}">Submit</heymenu-button>
   </template>
   <script>
     Polymer('heymenu-new-restaurant-form', {
@@ -39,7 +48,16 @@
       // instance was removed from the document
       leftView: function() { },
       // attribute added, removed or updated
-      attributeChanged: function(attrName, oldVal, newVal) { }
+      attributeChanged: function(attrName, oldVal, newVal) { },
+
+      onNewRestaurant: function() {
+        this.$.newRestaurant.go();
+      },
+
+      onRestaurantCreated: function(resp) {
+        console.log(resp)
+        window.location = "/" + resp.detail.response.uid;
+      }
     });
   </script>
 </polymer-element>

@@ -9,6 +9,12 @@
 
 {% block body %}
   <heymenu-page>
-    <heymenu-dish-container></heymenu-dish-container>
+    <heymenu-dish-container
+      dishes = '{{dishes}}'
+      categories='{{categories}}'
+      dishes = '{{dishes}}'
+      restaurant_uid='{{restaurant_uid}}'
+      isOwner='true'>
+    </heymenu-dish-container>
   </heymenu-page>
 {% endblock %}

@@ -1,4 +1,5 @@
 import webapp2
+from webapp2 import Route
 
 from controllers import pages
 from controllers.api import Category
@@ -14,5 +15,5 @@ application = webapp2.WSGIApplication([
   ('/api/check_restaurant_uid', CheckRestaurantUid),
   ('/p/new-restaurant', pages.NewRestaurant),
   ('/p/signin', pages.SignIn),
-  ('/.*', pages.Restaurant)
+  (Route(r'/<restaurant_uid>', pages.Restaurant, name = 'restaurant'))
   ], debug=True)

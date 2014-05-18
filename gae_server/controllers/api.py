@@ -31,6 +31,12 @@ class BaseApiHandler(webapp2.RequestHandler):
 
 class Restaurant(BaseApiHandler):
 
+  '''
+    Creates a new restaurant.
+    args:
+      uid: The restaurant uid.
+      name: The restaurant name.
+  '''
   def post(self):
     restaurant_name = self.request.get(NAME)
     restaurant_uid = self.request.get(RESTAURANT_UID)

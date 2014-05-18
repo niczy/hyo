@@ -1,0 +1,90 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/core-ajax/core-ajax.html">
+<link rel-"import" href="heymenu-button.html">
+
+<!--
+
+attributes:
+  dish: the json dish config containing title description and image.
+
+-->
+<polymer-element name="heymenu-dish-editor"  attributes="restaurant_uid">
+  <template>
+    <style>
+      /* styles for the custom element itself - lowest specificity */
+      :host {
+        display: block; 
+        text-align: left; 
+      }
+      img {
+        width: 100%;
+      }
+      h2 {
+        font-size: 1em;
+      }
+      p {
+        color: rgba(5, 14, 24, 0.52)
+      }
+      :host(:hover) p {
+        color: black;
+      }
+      .img-container {
+        width: 200px;
+        display: inline-block;
+        vertical-align: top;
+      }
+      .info-container {
+        text-align: left;
+        display: inline-block;
+        vertical-align: top;
+      }
+      /* 
+      style if an ancestor has the different class
+      :host(.different) { } 
+      */
+    </style>
+    <div class="img-container">
+      <img src="http://cssdeck.com/uploads/media/items/1/1swi3Qy.png" />
+    </div>
+    <div class="info-container">
+      <h2> <input placeholder="Dish Name" value={{name}}></h2>
+      <input value={{category_name}}>
+      <p>
+        <textarea placeholder = "Dish description">
+        </textarea>
+      </p>
+      <heymenu-button on-click = {{onCreateDish}}>Submit</heymenu-button>
+    </div>
+    <core-ajax
+      id="newDish"
+      method="POST"
+      handleAs="json"
+      params = '{"uid": "{{restaurant_uid}}", "category_name": "{{category_name}}", "name": "{{name}}"}'
+      on-core-response = "{{onDishCreated}}" 
+      url = "/api/dish">
+    </core-ajax>
+  </template>
+  <script>
+    Polymer('heymenu-dish-editor', {
+      // element is fully prepared
+      ready: function(){ },
+      // instance of the element is created
+      created: function() { },
+      // instance was inserted into the document
+      enteredView: function() { },
+      // instance was removed from the document
+      leftView: function() { },
+      // attribute added, removed or updated
+      attributeChanged: function(attrName, oldVal, newVal) { },
+
+      onDishCreated: function(resp) {
+        console.log(resp);
+        this.classList.toggle('hidden');
+        this.fire('dish-created', resp.detail.response)
+      },
+      onCreateDish: function() {
+        this.$.newDish.go();
+      }
+    });
+  </script>
+</polymer-element>
