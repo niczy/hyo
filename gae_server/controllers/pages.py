@@ -4,6 +4,7 @@ from controllers.templates import JINJA_ENVIRONMENT
 
 from logic import category_logic
 from logic import dish_logic
+from logic import restaurant_logic
 from util import json_encoder
 
 class BasePage(webapp2.RequestHandler):
@@ -19,7 +20,10 @@ class BasePage(webapp2.RequestHandler):
 class Index(BasePage):
 
   def get(self):
-    self.render('index.html')
+    restaurants = restaurant_logic.get_all()
+    self.render('index.html', {
+      "restaurants": json_encoder.encode(restaurants)
+      })
 
 
 '''

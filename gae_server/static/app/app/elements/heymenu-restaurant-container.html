@@ -3,7 +3,7 @@
 <link rel="import" href="heymenu-input.html">
 <link rel="import" href="heymenu-pin-layout.html">
 
-<polymer-element name="heymenu-restaurant-container"  attributes="">
+<polymer-element name="heymenu-restaurant-container"  attributes="restaurants">
   <template>
     <style>
       /* styles for the custom element itself - lowest specificity */
@@ -44,12 +44,9 @@
       <heymenu-input></heymenu-input>
     </div>
     <heymenu-pin-layout>
-      <div class="pin">Restaurant1</div> 
-      <div class="pin">Restaurant2</div> 
-      <div class="pin">Restaurant3</div> 
-      <div class="pin">Restaurant4</div> 
-      <div class="pin">Restaurant5</div> 
-      <div class="pin">Restaurant6</div> 
+      <template repeat="{{restaurant in restaurantsObj}}">
+        <a class="pin" href="/{{restaurant.uid}}" >{{restaurant.name}}</a> 
+      </template>
     </heymenu-pin-layout>
 
   </template>
@@ -64,7 +61,10 @@
       // instance was removed from the document
       leftView: function() { },
       // attribute added, removed or updated
-      attributeChanged: function(attrName, oldVal, newVal) { }
+      attributeChanged: function(attrName, oldVal, newVal) { },
+      restaurantsChanged: function(oldValue, newValue) {
+        this.restaurantsObj = JSON.parse(newValue);
+      },
     });
   </script>
 </polymer-element>
