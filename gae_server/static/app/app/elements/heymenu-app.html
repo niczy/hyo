@@ -2,11 +2,12 @@
 
 <link rel="import" href="../bower_components/core-layout/core-layout.html">
 <link rel="import" href="../bower_components/core-menu/core-menu.html">
+<link rel="import" href="root/root.html">
 <link rel="import" href="heymenu-header.html">
 <link rel="import" href="heymenu-dish-filter.html">
 <link rel="import" href="heymenu-grid-layout.html">
 
-<polymer-element name="heymenu-app"  attributes="">
+<polymer-element name="heymenu-app"  extends="heymenu-root" attributes="">
   <template>
     <style>
       div {
@@ -20,12 +21,10 @@
       */
     </style>
     <heymenu-header></heymenu-header>
-    <core-layout>
-      <heymenu-dish-filter></heymenu-dish-filter>
-      <div core-flex>
-        <heymenu-grid-layout id="dishContainer"></heymenu-grid-layout> 
-      </div>
-    </core-layout>
+    <heymenu-dish-filter></heymenu-dish-filter>
+    <div>
+      <heymenu-grid-layout id="dishContainer"></heymenu-grid-layout> 
+    </div>
   </template>
   <script>
     Polymer('heymenu-app', {

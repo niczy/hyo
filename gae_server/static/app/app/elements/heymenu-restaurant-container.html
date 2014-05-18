@@ -3,8 +3,9 @@
 <link rel="import" href="heymenu-input.html">
 <link rel="import" href="heymenu-pin-layout.html">
 
-<polymer-element name="heymenu-restaurant-container"  attributes="restaurants">
+<polymer-element name="heymenu-restaurant-container" attributes="restaurants">
   <template>
+    <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css">
     <style>
       /* styles for the custom element itself - lowest specificity */
       :host {
@@ -12,7 +13,6 @@
         display: block;
         width: 100%; 
         height: 800px;
-        background-image:url('http://www.themresort.com/media/gallery/images/RESTAURANTS-BARS/M-Resort-Anthonys-Steak-Oyster-Restaurant-Bar-1.jpg');
       }
       .container {
         padding-top: 100px;
@@ -41,7 +41,7 @@
       */
     </style>
     <div class="container">
-      <heymenu-input></heymenu-input>
+      <input class="form-control"></input>
     </div>
     <heymenu-pin-layout>
       <template repeat="{{restaurant in restaurantsObj}}">
