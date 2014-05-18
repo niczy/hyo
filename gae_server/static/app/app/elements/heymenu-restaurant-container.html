@@ -5,7 +5,6 @@
 
 <polymer-element name="heymenu-restaurant-container" attributes="restaurants">
   <template>
-    <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css">
     <style>
       /* styles for the custom element itself - lowest specificity */
       :host {
@@ -41,7 +40,7 @@
       */
     </style>
     <div class="container">
-      <input class="form-control"></input>
+      <heymenu-input class="form-control"></heymenu-input>
     </div>
     <heymenu-pin-layout>
       <template repeat="{{restaurant in restaurantsObj}}">
