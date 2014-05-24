@@ -2,6 +2,7 @@
 
 <link rel="import" href="heymenu-input.html">
 <link rel="import" href="heymenu-pin-layout.html">
+<link rel="import" href="restaurant-card/heymenu-restaurant-card.html">
 
 <polymer-element name="heymenu-restaurant-container" attributes="restaurants">
   <template>
@@ -48,10 +49,8 @@
     </div>
     <heymenu-pin-layout>
       <template repeat="{{restaurant in restaurantsObj}}">
-        <div class="restaurant">
-          <img src="/image/{{restaurant.logo}}">
-          <a class="pin" href="/{{restaurant.uid}}" >{{restaurant.name}}</a> 
-        </div>
+        <heymenu-restaurant-card on-click={{onRestaurantClicked}} class="pin" restaurant = {{restaurant}}>
+        </heymenu-restaurant-card>
       </template>
     </heymenu-pin-layout>
 
@@ -71,6 +70,9 @@
       restaurantsChanged: function(oldValue, newValue) {
         this.restaurantsObj = JSON.parse(newValue);
       },
+      onRestaurantClicked: function(event, detail , sender) {
+        window.location = '/' + event.srcElement.templateInstance.model.restaurant.uid;
+      }
     });
   </script>
 </polymer-element>
