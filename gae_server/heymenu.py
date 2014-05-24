@@ -2,6 +2,7 @@ import webapp2
 from webapp2 import Route
 
 from controllers import pages
+from controllers import image
 from controllers.api import Category
 from controllers.api import Dish 
 from controllers.api import Restaurant
@@ -15,5 +16,6 @@ application = webapp2.WSGIApplication([
   ('/api/check_restaurant_uid', CheckRestaurantUid),
   ('/p/new-restaurant', pages.NewRestaurant),
   ('/p/signin', pages.SignIn),
+  (Route(r'/image/<image_id>', image.ImageHandler)),
   (Route(r'/<restaurant_uid>', pages.Restaurant, name = 'restaurant'))
   ], debug=True)

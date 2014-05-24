@@ -20,19 +20,32 @@
       heymenu-input-group {
         padding: 5px 0px 5px 5px;
       }
+      #thumnail {
+        width: auto;
+        height: 100%;
+      }
+      #thumnailWrapper {
+        height: 200px;
+      }
       /* 
       style if an ancestor has the different class
       :host(.different) { } 
       */
     </style>
+    <div id="thumnailWrapper">
+      <img id="thumnail"> 
+    </div>
     <heymenu-input-group label="Restaurant Name:" labelWidth="{{ labelWidth }}" inputWidth="{{ inputWidth }}" value={{name}}></heymenu-input-group>
     <heymenu-input-group label="Restaurant Uid:" labelWidth="{{ labelWidth }}" inputWidth="{{ inputWidth }}" value={{uid}}></heymenu-input-group>
     <heymenu-input-group label="Restaurant Address:" labelWidth="{{ labelWidth }}" inputWidth="{{ inputWidth }}"></heymenu-input-group>
+    <input type = "file" on-change = {{onFileSelected}}>
     <core-ajax
       id="newRestaurant"
       method="POST"
       handleAs="json"
-      params = '{"uid": "{{uid}}", "name": "{{name}} "}'
+      params = '{"uid": "{{uid}}",
+                 "name": "{{name}}",
+                 "image_data": "{{imageData}}"}'
       on-core-response = "{{onRestaurantCreated}}" 
       url = "/api/restaurant"></core-ajax>
     <heymenu-button on-click="{{onNewRestaurant}}">Submit</heymenu-button>
@@ -57,6 +70,20 @@
       onRestaurantCreated: function(resp) {
         console.log(resp)
         window.location = "/" + resp.detail.response.uid;
+      },
+
+      onFileSelected: function(event, detail, sender) {
+        var file = event.srcElement.files[0];
+        var reader = new FileReader();
+        var element = this;
+        reader.onload = (function(selectedFile) {
+          return function(e) {
+            element.$.thumnail.src = e.target.result;
+            element.imageData = e.target.result;
+          }
+        })(file);
+        console.log('file selected');
+        reader.readAsDataURL(file);
       }
     });
   </script>

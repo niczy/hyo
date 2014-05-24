@@ -12,11 +12,11 @@ from exceptions import RestaurantExistError
     another uid. The restaurant can be accessed by
     http://domain/uid
 '''
-def add(uid, name):
+def add(uid, name, logo = None):
   "TODO: normalize uid to lower case"
   if get_by_id(uid) != None:
     raise RestaurantExistError("uid = %s" % uid)
-  restaurant = Restaurant(id = uid, uid = uid, name = name)
+  restaurant = Restaurant(id = uid, uid = uid, name = name, logo = logo)
   restaurant.put()
   return restaurant;
 

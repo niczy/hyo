@@ -6,10 +6,14 @@ from logic import category_logic
 from logic import dish_logic
 from logic.exceptions import CategoryNotExistError
 
+from model.image import Image
+
 class DishLogicTest(ModelTestCase):
 
+  image_key = ndb.Key(Image, 'image_id')
+
   def test_add_and_get_dishes(self):
-    restaurant = restaurant_logic.add('FulinMen', 'restaurant')
+    restaurant = restaurant_logic.add('FulinMen', 'restaurant', self.image_key)
     category = category_logic.add(restaurant.key, "category")
     dish_logic.add_by_category_key(category.key, 'Dish1')
     dish_logic.add_by_category_key(category.key, 'Dish2')

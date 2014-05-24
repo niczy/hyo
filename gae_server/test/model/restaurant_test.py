@@ -16,7 +16,7 @@ class RestaurantTestCase(ModelTestCase):
 
   def testSerialization(self):
     restaurant = Restaurant(uid = "uid", name = 'Restaurant')
-    self.assertEqual('{"name": "Restaurant", "uid": "uid"}',
+    self.assertEqual('{"logo": null, "name": "Restaurant", "uid": "uid"}',
         json_encoder.encode(restaurant))
 
 if __name__ == '__main__':

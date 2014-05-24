@@ -1,12 +1,13 @@
 import webapp2
 import json
+import logging
 
 from google.appengine.ext import ndb
 from logic import category_logic
 from logic import dish_logic
 from logic import restaurant_logic
+from model.image import Image
 from util import json_encoder
-
 
 '''
  Request parameter keys.
@@ -14,6 +15,8 @@ from util import json_encoder
 RESTAURANT_UID = 'uid'
 CATEGORY_NAME = 'category_name'
 NAME = 'name'
+RESTAURANT_IMAGE = 'restaurant_image'
+IMAGE_DATA = 'image_data'
 
 class BaseApiHandler(webapp2.RequestHandler):
 
@@ -40,7 +43,11 @@ class Restaurant(BaseApiHandler):
   def post(self):
     restaurant_name = self.request.get(NAME)
     restaurant_uid = self.request.get(RESTAURANT_UID)
-    restaurant = restaurant_logic.add(restaurant_uid, restaurant_name)
+    "TODO: decode image"
+    restaurant_image_data = self.request.get(IMAGE_DATA)
+    image = Image.from_image_data(restaurant_image_data) 
+    image.put()
+    restaurant = restaurant_logic.add(restaurant_uid, restaurant_name, image.key)
     self.send_response(restaurant)
 
 class CheckRestaurantUid(BaseApiHandler):

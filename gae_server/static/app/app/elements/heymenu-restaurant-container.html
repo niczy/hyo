@@ -34,6 +34,10 @@
           width: 300px;
         }
       }
+      .restaurant img {
+        width: 100px;
+        height: 100px;
+      }
       /* 
       style if an ancestor has the different class
       :host(.different) { } 
@@ -44,7 +48,10 @@
     </div>
     <heymenu-pin-layout>
       <template repeat="{{restaurant in restaurantsObj}}">
-        <a class="pin" href="/{{restaurant.uid}}" >{{restaurant.name}}</a> 
+        <div class="restaurant">
+          <img src="/image/{{restaurant.logo}}">
+          <a class="pin" href="/{{restaurant.uid}}" >{{restaurant.name}}</a> 
+        </div>
       </template>
     </heymenu-pin-layout>
 

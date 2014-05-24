@@ -1,5 +1,7 @@
 from google.appengine.ext import ndb
 
+from image import Image
+
 '''
 The restaurant model.
 Usually the entity key is the name of the restaurant.
@@ -13,3 +15,4 @@ class Restaurant(ndb.Model):
   '''
   uid = ndb.StringProperty()
   name = ndb.StringProperty()
+  logo = ndb.KeyProperty(kind = Image)
