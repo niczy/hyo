@@ -13,6 +13,28 @@ class ApiTest(BaseAppTest):
                 'I12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y'
                 '4OHwAAAABJRU5ErkJggg==') 
 
+  resized_base64_data = ('/9j/4AAQSkZJRgABAQAAAQABAAD/'
+                '2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSE'
+                'w8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ'
+                '0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIR'
+                'whMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyM'
+                'jIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCAACA'
+                'AIDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAA'
+                'AAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA'
+                'AAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0Kxw'
+                'RVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RF'
+                'RkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDh'
+                'IWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7'
+                'i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6er'
+                'x8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAA'
+                'AAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQ'
+                'J3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMz'
+                'UvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERU'
+                'ZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOE'
+                'hYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uL'
+                'm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09'
+                'fb3+Pn6/9oADAMBAAIRAxEAPwDm6KKK+cP2c//Z')
+
   image_data = ('data:image/png;base64,'
                 'iVBORw0KGgoAAAAN'
                 'SUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQ'
@@ -25,9 +47,9 @@ class ApiTest(BaseAppTest):
     self.assertEqual(response.status_int, 200)
     self.assertEqual(json.dumps(response.json),
         '{"logo": "agx0ZXN0YmVkLXRlc3RyCwsSBUltYWdlGAEM", "name": "restaurant", "uid": "restaurant-uid"}')
-    response = self.testapp.get('/image/%s' % response.json['logo'])
+    response = self.testapp.get('/image/%s?height=2&width=2' % response.json['logo'])
     new_image = base64.standard_b64encode(response.body) 
-    self.assertEqual(self.base64_data, new_image)
+    self.assertEqual(self.resized_base64_data, new_image)
     self.assertEqual(response.status_int, 200)
 
   def testCheckRestaurantUid(self):
