@@ -7,59 +7,15 @@
     <style>
       /* styles for the custom element itself - lowest specificity */
       :host { display: block; }
-      ::content .pin {
-        width: 150px;
-        display: inline-block;
-        background: #FEFEFE;
-        border: 2px solid #FAFAFA;
-        box-shadow: 0 1px 2px rgba(34, 25, 25, 0.4);
-        margin: 10px 10px;
-        -webkit-column-break-inside: avoid;
-        -moz-column-break-inside: avoid;
-        column-break-inside: avoid;
-        padding: 15px;
-        padding-bottom: 5px;
-        background: -webkit-linear-gradient(45deg, #FFF, #F9F9F9);
-          
-        -webkit-transition: all .2s ease;
-        -moz-transition: all .2s ease;
-        -o-transition: all .2s ease;
-        transition: all .2s ease;
-      }
-      .pin {
-        width: 150px;
-        display: inline-block;
-        background: #FEFEFE;
-        border: 2px solid #FAFAFA;
-        box-shadow: 0 1px 2px rgba(34, 25, 25, 0.4);
-        margin: 10px 10px;
-        -webkit-column-break-inside: avoid;
-        -moz-column-break-inside: avoid;
-        column-break-inside: avoid;
-        padding: 15px;
-        padding-bottom: 5px;
-        background: -webkit-linear-gradient(45deg, #FFF, #F9F9F9);
-          
-        -webkit-transition: all .2s ease;
-        -moz-transition: all .2s ease;
-        -o-transition: all .2s ease;
-        transition: all .2s ease;
-      }
       #columns {
         -webkit-column-width: 200px;
-        -webkit-column-gap: 10px;
         -webkit-column-fill: auto;
         -moz-column-width: 200px;
-        -moz-column-gap: 10px;
         -moz-column-fill: auto;
         column-width: 200px;
-        column-gap: 10px;
         column-fill: auto;
       }
       
-      .pin:hover {
-        opacity: 1.0;
-      }
       /* 
       style if an ancestor has the different class
       :host(.different) { } 

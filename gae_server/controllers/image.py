@@ -38,8 +38,8 @@ class ImageHandler(webapp2.RequestHandler):
       ratio = ratio_y
     
     new_img.resize(width = resize_width, height = resize_height)
-    offset_x = resize_width / 2
-    offset_y = resize_height / 2
+    offset_x = width / 2
+    offset_y = height / 2
     left_x = (center_x - offset_x * ratio) / real_width
     top_y = (center_y - offset_y * ratio) / real_height
     right_x = (center_x + offset_x * ratio) / real_width
