@@ -1,6 +1,11 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 
-<polymer-element name="heymenu-header"  attributes="actions">
+<!--
+  attributes:
+    title: The action bar title.
+    actions: action items on the right.
+-->
+<polymer-element name="heymenu-header"  attributes="title actions">
   <template>
     <style>
        /* styles for the custom element itself - lowest specificity */
@@ -37,17 +42,20 @@
         text-decoration:none;
       }
        a:active {text-decoration:none;}
+       .actionItem {
+         cursor: pointer;
+       }
       /* 
       style if an ancestor has the different class
       :host(.different) { } 
       */
     </style>
     <div class="nameContainer">
-      <a href="/" class="appName">Heymenu</a>
+      <a href="/" class="appName">Hey!menu</a>
       <template repeat="{{action in actionItems}}">
         <ul class="actions">
           <li>
-            <span on-click={{onActionClicked}}>
+            <span class="actionItem" on-click={{onActionClicked}}>
               {{action.name}}
             </span>
           </li>

@@ -1,0 +1,50 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<link rel="import" href="../heymenu-page.html">
+<link rel="import" href="../heymenu-restaurant-container.html">
+
+<polymer-element name="heymenu-page-index" attributes="restaurants">
+  <template>
+    <style>
+      div {
+        border: solid;
+      }
+      /* styles for the custom element itself - lowest specificity */
+      :host { display: block; }
+      /* 
+      style if an ancestor has the different class
+      :host(.different) { } 
+      */
+    </style>
+    <heymenu-page
+      title='Hey!menu'
+      actions='[{"name": "New Restaurant", "actionId": "newRestaurant"}]',
+      on-action={{onAction}}>
+      <heymenu-restaurant-container restaurants = "{{restaurants}}"></heymenu-restaurant-container>
+    </heymenu-page>
+  </template>
+  <script>
+    Polymer('heymenu-page-index', {
+      // element is fully prepared
+      ready: function(){
+      },
+      // instance of the element is created
+      created: function() { },
+      // instance was inserted into the document
+      enteredView: function() { },
+      // instance was removed from the document
+      leftView: function() { },
+      // attribute added, removed or updated
+      attributeChanged: function(attrName, oldVal, newVal) { },
+      onAction: function(event, detail, sender) {
+        this.$.deleteRestaurant.go();
+      },
+      onRestaurantDeleted: function(resp) {
+        window.location = '/';
+      },
+      onAction: function(event, detail, sender) {
+        window.location = '/p/new-restaurant';
+      }
+    });
+  </script>
+</polymer-element>

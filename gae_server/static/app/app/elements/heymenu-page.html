@@ -2,7 +2,12 @@
 
 <link rel="import" href="heymenu-header.html">
 
-<polymer-element name="heymenu-page" attributes="actions">
+<!-- 
+  attributes:
+    title: The action bar title.
+    actions: array of json object which defines the action item on the right.
+-->
+<polymer-element name="heymenu-page" attributes="title actions">
   <template>
     <style>
       /* styles for the custom element itself - lowest specificity */
@@ -17,7 +22,7 @@
       :host(.different) { } 
       */
     </style>
-    <heymenu-header actions="{{actions}}"></heymenu-header>
+    <heymenu-header title="{{title}}" actions="{{actions}}"></heymenu-header>
     <div class="container">
       <content></content>
     </div>

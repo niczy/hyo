@@ -1,7 +1,11 @@
 {% extends "base.html" %}
+{% block head %}
+  {{ super() }}
+  <link rel="import" href="/app/elements/pages/heymenu-page-index.html">
+{% endblock %}
+
 {% block title %}Hey!menu{% endblock %}
 {% block body %}
-  <heymenu-page title="Hey!menu" actions='[{"name": "New Restaurant", "url": "/p/new-restaurant"}]'>
-    <heymenu-restaurant-container restaurants = "{{restaurants}}"></heymenu-restaurant-container>
-  </heymenu-page>
-{% endblock %}
+  <heymenu-page-index restaurants = "{{restaurants}}">
+  </heymenu-page-index>
+  {% endblock %}
