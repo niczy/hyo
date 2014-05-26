@@ -2,6 +2,7 @@
 <link rel="import" href="../bower_components/core-ajax/core-ajax.html">
 <link rel="import" href="heymenu-input-group.html">
 <link rel="import" href="heymenu-button.html">
+<link rel="import" href="file-uploader/heymenu-file-uploader.html">
 
 <polymer-element name="heymenu-new-restaurant-form"  attributes="labelWidth formWidth inputWidth">
   <template>
@@ -26,6 +27,7 @@
       }
       #thumnailWrapper {
         height: 200px;
+        width: 200px;
       }
       /* 
       style if an ancestor has the different class
@@ -33,19 +35,18 @@
       */
     </style>
     <div id="thumnailWrapper">
-      <img id="thumnail"> 
+      <heymenu-file-uploader fileData={{fileData}}></heymenu-file-uploader>
     </div>
     <heymenu-input-group label="Restaurant Name:" labelWidth="{{ labelWidth }}" inputWidth="{{ inputWidth }}" value={{name}}></heymenu-input-group>
     <heymenu-input-group label="Restaurant Uid:" labelWidth="{{ labelWidth }}" inputWidth="{{ inputWidth }}" value={{uid}}></heymenu-input-group>
     <heymenu-input-group label="Restaurant Address:" labelWidth="{{ labelWidth }}" inputWidth="{{ inputWidth }}"></heymenu-input-group>
-    <input type = "file" on-change = {{onFileSelected}}>
     <core-ajax
       id="newRestaurant"
       method="POST"
       handleAs="json"
       params = '{"uid": "{{uid}}",
                  "name": "{{name}}",
-                 "image_data": "{{imageData}}"}'
+                 "image_data": "{{fileData}}"}'
       on-core-response = "{{onRestaurantCreated}}" 
       url = "/api/restaurant"></core-ajax>
     <heymenu-button on-click="{{onNewRestaurant}}">Submit</heymenu-button>

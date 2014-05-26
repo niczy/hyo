@@ -14,5 +14,7 @@ class Restaurant(ndb.Model):
     UID, the same as the entity key. Used to serilized to json response.
   '''
   uid = ndb.StringProperty()
+
   name = ndb.StringProperty()
+
   logo = ndb.KeyProperty(kind = Image)

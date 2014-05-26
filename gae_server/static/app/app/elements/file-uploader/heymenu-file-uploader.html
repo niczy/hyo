@@ -1,0 +1,80 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<!--
+  events:
+    Fire 'file-loaded' event.
+-->
+<polymer-element name="heymenu-file-uploader"  attributes="fileData">
+  <template>
+    <style>
+      /* styles for the custom element itself - lowest specificity */
+      :host {
+        display: block; 
+        height: 100%;
+        width: 100%;
+      }
+      img {
+        position: absolute;
+        height:100%;
+        z-index: 0;
+      }
+      input {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        opacity: 0;
+        cursor: pointer;
+      }
+      #placeHolder {
+        position: absolute;
+        z-index: -1;
+      }
+      .container {
+        height: 100%;
+        width: 100%;
+        position: relative;
+      }
+      /* 
+      style if an ancestor has the different class
+      :host(.different) { } 
+      */
+    </style>
+    <div class="container">
+      <p id="placeHolder">
+        Upload image
+      </p>
+      <img id="thumnail">
+      <input type = "file" on-change = {{onFileSelected}}>
+    </div>
+  </template>
+  <script>
+    Polymer('heymenu-file-uploader', {
+      // element is fully prepared
+      ready: function(){ },
+      // instance of the element is created
+      created: function() { },
+      // instance was inserted into the document
+      enteredView: function() { },
+      // instance was removed from the document
+      leftView: function() { },
+      // attribute added, removed or updated
+      attributeChanged: function(attrName, oldVal, newVal) { },
+
+      onFileSelected: function(event, detail, sender) {
+        var file = event.srcElement.files[0];
+        var reader = new FileReader();
+        var element = this;
+        reader.onload = (function(selectedFile) {
+          return function(e) {
+            element.$.thumnail.src = e.target.result;
+            element.fileData= e.target.result;
+          }
+        })(file);
+        console.log('file selected');
+        reader.readAsDataURL(file);
+      }
+    });
+  </script>
+</polymer-element>
+

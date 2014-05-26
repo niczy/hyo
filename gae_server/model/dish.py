@@ -2,6 +2,7 @@ from google.appengine.ext import ndb
 
 from model.restaurant import Restaurant
 from model.category import Category
+from model.image import Image
 
 class Dish(ndb.Model):
 
@@ -12,3 +13,6 @@ class Dish(ndb.Model):
   category_key = ndb.KeyProperty(kind = Category)
 
   name = ndb.StringProperty()
+
+  img_key = ndb.KeyProperty(kind = Image)
+

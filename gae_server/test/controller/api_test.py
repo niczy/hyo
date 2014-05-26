@@ -99,7 +99,7 @@ class ApiTest(BaseAppTest):
     params = {'uid': restaurant_uid, 'category_name': 'category 1', 'name': 'dish 1'}
     response = self.testapp.post('/api/dish', params)
     self.assertEqual(response.status_int, 200)
-    self.assertEqual(json.dumps(response.json), '{"category_key": "agx0ZXN0YmVkLXRlc3RyDgsSCENhdGVnb3J5GAEM", "restaurant_key": "agx0ZXN0YmVkLXRlc3RyEwsSClJlc3RhdXJhbnQiA3VpZAw", "name": "dish 1"}')
+    self.assertEqual(json.dumps(response.json), '{"category_key": "agx0ZXN0YmVkLXRlc3RyDgsSCENhdGVnb3J5GAEM", "img_key": null, "restaurant_key": "agx0ZXN0YmVkLXRlc3RyEwsSClJlc3RhdXJhbnQiA3VpZAw", "name": "dish 1"}')
 
   def testGetDishes(self):
     restaurant_uid = 'uid'
@@ -110,5 +110,5 @@ class ApiTest(BaseAppTest):
     dish_logic.add(restaurant_uid, category_name, 'Dish 2')
     response = self.testapp.get('/api/dish?uid=%s' % restaurant_uid)
     self.assertEqual(response.status_int, 200)
-    self.assertEqual(json.dumps(response.json), '[{"category_key": "agx0ZXN0YmVkLXRlc3RyDgsSCENhdGVnb3J5GAEM", "restaurant_key": "agx0ZXN0YmVkLXRlc3RyEwsSClJlc3RhdXJhbnQiA3VpZAw", "name": "Dish 1"}, {"category_key": "agx0ZXN0YmVkLXRlc3RyDgsSCENhdGVnb3J5GAEM", "restaurant_key": "agx0ZXN0YmVkLXRlc3RyEwsSClJlc3RhdXJhbnQiA3VpZAw", "name": "Dish 2"}]')
+    self.assertEqual(json.dumps(response.json), '[{"category_key": "agx0ZXN0YmVkLXRlc3RyDgsSCENhdGVnb3J5GAEM", "img_key": null, "restaurant_key": "agx0ZXN0YmVkLXRlc3RyEwsSClJlc3RhdXJhbnQiA3VpZAw", "name": "Dish 1"}, {"category_key": "agx0ZXN0YmVkLXRlc3RyDgsSCENhdGVnb3J5GAEM", "img_key": null, "restaurant_key": "agx0ZXN0YmVkLXRlc3RyEwsSClJlc3RhdXJhbnQiA3VpZAw", "name": "Dish 2"}]')
 

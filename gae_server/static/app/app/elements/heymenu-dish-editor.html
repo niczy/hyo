@@ -1,6 +1,7 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="../bower_components/core-ajax/core-ajax.html">
-<link rel-"import" href="heymenu-button.html">
+<link rel="import" href="heymenu-button.html">
+<link rel="import" href="file-uploader/heymenu-file-uploader.html">
 
 <!--
 
@@ -30,12 +31,11 @@ attributes:
       }
       .img-container {
         width: 200px;
-        display: inline-block;
+        height: 200px;
         vertical-align: top;
       }
       .info-container {
         text-align: left;
-        display: inline-block;
         vertical-align: top;
       }
       /* 
@@ -44,7 +44,7 @@ attributes:
       */
     </style>
     <div class="img-container">
-      <img src="http://cssdeck.com/uploads/media/items/1/1swi3Qy.png" />
+      <heymenu-file-uploader></heymenu-file-uploader>
     </div>
     <div class="info-container">
       <h2> <input placeholder="Dish Name" value={{name}}></h2>
