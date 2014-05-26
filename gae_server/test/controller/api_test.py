@@ -41,16 +41,25 @@ class ApiTest(BaseAppTest):
                 'I12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y'
                 '4OHwAAAABJRU5ErkJggg==')
 
-  def testAddRestaurant(self):
-    params = {'name': 'restaurant', 'uid': 'restaurant-uid', 'image_data': self.image_data}
+  def testAddAndDeleteRestaurant(self):
+    restaurant_uid = 'restaurant-uid';
+    params = {'name': 'restaurant', 'uid': restaurant_uid, 'image_data': self.image_data}
     response = self.testapp.post('/api/restaurant', params)
     self.assertEqual(response.status_int, 200)
-    self.assertEqual(json.dumps(response.json),
-        '{"logo": "agx0ZXN0YmVkLXRlc3RyCwsSBUltYWdlGAEM", "name": "restaurant", "uid": "restaurant-uid"}')
+    self.assertEqual(response.json,
+        {"logo": "agx0ZXN0YmVkLXRlc3RyCwsSBUltYWdlGAEM", "name": "restaurant", "uid": "restaurant-uid"})
+
+    "Test getting resized image"
     response = self.testapp.get('/image/%s?height=2&width=2' % response.json['logo'])
     new_image = base64.standard_b64encode(response.body) 
     self.assertEqual(self.resized_base64_data, new_image)
     self.assertEqual(response.status_int, 200)
+
+    "Test deleting image"
+    params = {'uid': restaurant_uid}
+    response = self.testapp.delete('/api/restaurant/' + restaurant_uid)
+    self.assertEqual(response.status_int, 200)
+    self.assertEqual(response.json, {"status": "ok"})
 
   def testCheckRestaurantUid(self):
     response = self.testapp.get('/api/check_restaurant_uid?uid=notexist')

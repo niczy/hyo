@@ -43,12 +43,16 @@ class Restaurant(BaseApiHandler):
   def post(self):
     restaurant_name = self.request.get(NAME)
     restaurant_uid = self.request.get(RESTAURANT_UID)
-    "TODO: decode image"
     restaurant_image_data = self.request.get(IMAGE_DATA)
     image = Image.from_image_data(restaurant_image_data) 
     image.put()
     restaurant = restaurant_logic.add(restaurant_uid, restaurant_name, image.key)
     self.send_response(restaurant)
+
+  def delete(self, restaurant_uid):
+    logging.info("restaurant uid is %s" % restaurant_uid)
+    restaurant_logic.delete(restaurant_uid)
+    self.send_response({"status": "ok"})
 
 class CheckRestaurantUid(BaseApiHandler):
 

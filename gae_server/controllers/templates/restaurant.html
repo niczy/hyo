@@ -2,19 +2,16 @@
 
 {% block head %}
   {{ super() }}
-  <link rel="import" href="/app/elements/heymenu-dish-container.html">
+  <link rel="import" href="/app/elements/pages/heymenu-page-restaurant.html">
 {% endblock %}
 
 {% block title %}Hey!menu{% endblock %}
 
 {% block body %}
-  <heymenu-page>
-    <heymenu-dish-container
-      dishes = '{{dishes}}'
-      categories='{{categories}}'
-      dishes = '{{dishes}}'
-      restaurant_uid='{{restaurant_uid}}'
-      isOwner='true'>
-    </heymenu-dish-container>
-  </heymenu-page>
+  <heymenu-page-restaurant
+    dishes = '{{dishes}}'
+    categories='{{categories}}'
+    restaurant_uid='{{restaurant_uid}}'
+    isOwner='true'>
+  <heymenu-page-restaurant>
 {% endblock %}

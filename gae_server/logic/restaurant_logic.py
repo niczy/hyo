@@ -1,4 +1,6 @@
 
+from google.appengine.ext import ndb
+from logic import check_get_restaurant
 from logic import check_get_restaurant_by_uid
 from model.restaurant import Restaurant
 from exceptions import RestaurantExistError
@@ -19,6 +21,11 @@ def add(uid, name, logo = None):
   restaurant = Restaurant(id = uid, uid = uid, name = name, logo = logo)
   restaurant.put()
   return restaurant;
+
+def delete(uid):
+  restaurant_key = ndb.Key(Restaurant, uid)
+  check_get_restaurant(restaurant_key)
+  restaurant_key.delete()
 
 def get_all():
   return Restaurant.query().fetch()

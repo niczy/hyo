@@ -47,9 +47,9 @@
       <template repeat="{{action in actionItems}}">
         <ul class="actions">
           <li>
-            <a href="{{action.url}}">
+            <span on-click={{onActionClicked}}>
               {{action.name}}
-            </a>
+            </span>
           </li>
         </ul>
       </template>
@@ -72,6 +72,10 @@
       actionsChanged: function(oldVal, newVal) {
         this.actionItems= JSON.parse(newVal);
         console.log(this.actionItems);
+      },
+      onActionClicked: function(event, detail, sender) {
+        this.fire('action',
+          {actionId: event.srcElement.templateInstance.model.action.actionId});
       }
     });
   </script>

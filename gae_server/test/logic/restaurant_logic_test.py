@@ -12,10 +12,16 @@ class RestaurantLogicTestCase(ModelTestCase):
 
   image_key = ndb.Key(Image, 'image_id')
 
-  def testInsertRestaurant(self):
-    restaurant_logic.add('FuLinMen', 'restaurant', self.image_key)
+  def testInsertAndDeleteRestaurant(self):
+    restaurant_uid = 'FuLinMen'
+    restaurant_logic.add(restaurant_uid, 'restaurant', self.image_key)
     restaurants = restaurant_logic.get_all()
     self.assertEqual(1, len(restaurants))
+
+    restaurant_logic.delete(restaurant_uid)
+    restaurants = restaurant_logic.get_all()
+    self.assertEqual(0, len(restaurants))
+
 
   def testGetByName(self):
     restaurant_logic.add('fulinmen', 'fulinmen', self.image_key) 

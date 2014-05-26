@@ -1,0 +1,57 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<link rel="import" href="../heymenu-header.html">
+<link rel="import" href="../heymenu-page.html">
+<link rel="import" href="../heymenu-dish-container.html">
+
+<polymer-element name="heymenu-page-restaurant" attributes="dishes categories restaurant_uid isOwner">
+  <template>
+    <style>
+      div {
+        border: solid;
+      }
+      /* styles for the custom element itself - lowest specificity */
+      :host { display: block; }
+      /* 
+      style if an ancestor has the different class
+      :host(.different) { } 
+      */
+    </style>
+    <heymenu-page actions='[{"name": "Delete Restaurant", "actionId": "deleteRestaurant"}]' on-action={{onAction}}>
+       <heymenu-dish-container
+         dishes = '{{dishes}}'
+         categories= '{{categories}}'
+         restaurant_uid= '{{restaurant_uid}}'
+         isOwner='true'>
+       </heymenu-dish-container>
+     </heymenu-page>
+     <core-ajax
+        id="deleteRestaurant"
+        method="DELETE"
+        handleAs="json"
+        on-core-response = "{{onRestaurantDeleted}}" 
+        url = "/api/restaurant/{{restaurant_uid}}"></core-ajax>
+
+  </template>
+  <script>
+    Polymer('heymenu-page-restaurant', {
+      // element is fully prepared
+      ready: function(){
+      },
+      // instance of the element is created
+      created: function() { },
+      // instance was inserted into the document
+      enteredView: function() { },
+      // instance was removed from the document
+      leftView: function() { },
+      // attribute added, removed or updated
+      attributeChanged: function(attrName, oldVal, newVal) { },
+      onAction: function(event, detail, sender) {
+        this.$.deleteRestaurant.go();
+      },
+      onRestaurantDeleted: function(resp) {
+        window.location = '/';
+      }
+    });
+  </script>
+</polymer-element>
