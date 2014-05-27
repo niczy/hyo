@@ -101,6 +101,15 @@ class ApiTest(BaseAppTest):
     self.assertEqual(response.status_int, 200)
     self.assertEqual(json.dumps(response.json), '{"category_key": "agx0ZXN0YmVkLXRlc3RyDgsSCENhdGVnb3J5GAEM", "img_key": null, "restaurant_key": "agx0ZXN0YmVkLXRlc3RyEwsSClJlc3RhdXJhbnQiA3VpZAw", "name": "dish 1"}')
 
+    params = {'uid': restaurant_uid, 'category_name': 'category 1', 'name': 'dish 1', "image_data": self.image_data}
+    response = self.testapp.post('/api/dish', params)
+    self.assertEqual(response.status_int, 200)
+    self.assertEqual(json.dumps(response.json), ('{"category_key": "agx0ZXN0YmVkLXRlc3RyDgsSCENhdGVnb3J5GAEM", '
+                                                '"img_key": "agx0ZXN0YmVkLXRlc3RyCwsSBUltYWdlGAMM", '
+                                                '"restaurant_key": "agx0ZXN0YmVkLXRlc3RyEwsSClJlc3RhdXJhbnQiA3VpZAw", '
+                                                '"name": "dish 1"}'))
+
+
   def testGetDishes(self):
     restaurant_uid = 'uid'
     category_name = 'soup'

@@ -17,14 +17,15 @@ def get_all_by_restaurant_uid(restaurant_uid):
   check_get_restaurant(restaurant_key)
   return Dish.query(Dish.restaurant_key == restaurant_key).fetch()
 
-def add(restaurant_uid, category_name, dish_name):
+def add(restaurant_uid, category_name, dish_name, image_key = None):
   categories = Category.query(ndb.AND(
       Category.restaurant_key == ndb.Key(Restaurant, restaurant_uid),
       Category.name == category_name)).fetch()
-  return add_by_category_key(categories[0].key, dish_name)
+  "TODO: check if category exist. Throw exception if so."
+  return add_by_category_key(categories[0].key, dish_name, image_key)
 
-def add_by_category_key(category_key, name):
+def add_by_category_key(category_key, name, image_key = None):
   category = check_get_cateogry(category_key)
-  dish = Dish(restaurant_key = category.restaurant_key, category_key = category_key, name = name)
+  dish = Dish(restaurant_key = category.restaurant_key, category_key = category_key, name = name, img_key = image_key)
   dish.put()
   return dish

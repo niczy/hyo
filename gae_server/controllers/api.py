@@ -111,6 +111,12 @@ class Dish(BaseApiHandler):
     restaurant_uid = self.request.get(RESTAURANT_UID)
     category_name = self.request.get(CATEGORY_NAME)
     dish_name = self.request.get(NAME)
-    dish = dish_logic.add(restaurant_uid, category_name, dish_name)
+    dish_image_data = self.request.get(IMAGE_DATA)
+    img_key = None
+    if dish_image_data:
+      image = Image.from_image_data(dish_image_data) 
+      image.put()
+      img_key = image.key
+    dish = dish_logic.add(restaurant_uid, category_name, dish_name, img_key)
     self.send_response(dish)
 
