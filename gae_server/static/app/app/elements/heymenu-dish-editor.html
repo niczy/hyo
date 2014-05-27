@@ -44,7 +44,7 @@ attributes:
       */
     </style>
     <div class="img-container">
-      <heymenu-file-uploader></heymenu-file-uploader>
+      <heymenu-file-uploader fileData={{fileData}}></heymenu-file-uploader>
     </div>
     <div class="info-container">
       <h2> <input placeholder="Dish Name" value={{name}}></h2>
@@ -59,7 +59,7 @@ attributes:
       id="newDish"
       method="POST"
       handleAs="json"
-      params = '{"uid": "{{restaurant_uid}}", "category_name": "{{category_name}}", "name": "{{name}}"}'
+      params = '{"uid": "{{restaurant_uid}}", "category_name": "{{category_name}}", "name": "{{name}}", "image_data": "{{fileData}}"}'
       on-core-response = "{{onDishCreated}}" 
       url = "/api/dish">
     </core-ajax>
