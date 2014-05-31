@@ -1,4 +1,5 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/core-drawer-panel/core-drawer-panel.html">
 <link rel="import" href="heymenu-dish-category.html">
 <link rel="import" href="heymenu-pin-layout.html">
 <link rel="import" href="heymenu-dish-item.html">
@@ -8,8 +9,11 @@
   <template>
     <style>
       /* styles for the custom element itself - lowest specificity */
-      :host { display: block;
+      :host { 
+        display: block;
         width: 100%; 
+        height: 100%;
+        position: relative;
       }
       heymenu-dish-category {
         width: 100px;
@@ -22,17 +26,6 @@
         border: solid;
       }
       @media (max-width: 530px) {
-        heymenu-dish-category {
-          display: none;
-        }
-        heymenu-dish-grid {
-          float: left;
-          width: 95%;
-          border: solid;
-        }
-      }
-      td {
-        vertical-align: top;
       }
       .hidden {
         display: none;
@@ -40,15 +33,17 @@
       #newDishButton {
         display: block;
       }
-
+      #drawer {
+        float: left;
+        display: inline-block;
+      }
       /* 
       style if an ancestor has the different class
       :host(.different) { } 
       */
     </style>
-    <table>
-      <tr>
-        <td>
+    <core-drawer-panel>
+        <div drawer>
           <heymenu-dish-category
             categories = '{{categories}}'
             restaurant_uid = '{{restaurant_uid}}'>
@@ -56,17 +51,16 @@
           <heymenu-button id="newDishButton" on-click="{{onNewDish}}">
             New Dish
           </heymenu-button>
-        </td>
-        <td>
+        </div>
+        <div main>
           <heymenu-dish-editor id="dishEditor" class="hidden" restaurant_uid = {{restaurant_uid}} class="pin"></heymenu-dish-editor>
           <heymenu-pin-layout>
             <template repeat="{{ dish in dishesObj }}">
               <heymenu-dish-item dish = {{dish}} class="pin"></heymenu-dish-item>
             </template>
           </heymenu-pin-layout>
-        </td>
-      </tr>
-    </table>
+        </div>
+    </div>
   </template>
   <script>
     Polymer('heymenu-dish-container', {

@@ -11,7 +11,10 @@
         border: solid;
       }
       /* styles for the custom element itself - lowest specificity */
-      :host { display: block; }
+      :host {
+        display: block;
+        height: 100%;
+      }
       /* 
       style if an ancestor has the different class
       :host(.different) { } 

@@ -13,7 +13,6 @@
   "devDependencies": {},
   "resolutions": {
     "polymer": "master",
-    "core-component-page": "master",
-    "core-action-icons": "master"
+    "core-component-page": "master"
   }
 }
