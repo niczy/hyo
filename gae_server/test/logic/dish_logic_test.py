@@ -28,6 +28,11 @@ class DishLogicTest(ModelTestCase):
     dishes = dish_logic.get_all_by_restaurant_uid('FulinMen')
     self.assertEquals(4, len(dishes))
 
+    dish_logic.delete_by_id(dishes[0].key.id())
+    dishes = dish_logic.get_all_by_restaurant_uid('FulinMen')
+    self.assertEquals(3, len(dishes))
+
+
 
 
   def test_category_not_exist(self):

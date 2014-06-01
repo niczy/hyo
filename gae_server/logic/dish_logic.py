@@ -24,6 +24,13 @@ def add(restaurant_uid, category_name, dish_name, image_key = None):
   "TODO: check if category exist. Throw exception if so."
   return add_by_category_key(categories[0].key, dish_name, image_key)
 
+def delete_by_id(dish_id):
+  dish = Dish.get_by_id(dish_id)
+  delete_by_key(dish.key)
+
+def delete_by_key(dish_key):
+  dish_key.delete()
+
 def add_by_category_key(category_key, name, image_key = None):
   category = check_get_cateogry(category_key)
   dish = Dish(restaurant_key = category.restaurant_key, category_key = category_key, name = name, img_key = image_key)
