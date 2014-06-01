@@ -6,7 +6,7 @@ attributes:
   dish: the json dish config containing title description and image.
 
 -->
-<polymer-element name="heymenu-dish-item"  attributes="dish">
+<polymer-element name="heymenu-dish-card"  attributes="dish">
   <template>
     <style>
       /* styles for the custom element itself - lowest specificity */
@@ -16,7 +16,8 @@ attributes:
         margin: 4px;
         padding: 4px;
         width: 200px;
-        height: 400px;
+        height: 300px;
+        position:relative;
       }
       img {
         width: 100%;
@@ -25,28 +26,52 @@ attributes:
         font-size: 1em;
       }
       p {
-        color: rgba(5, 14, 24, 0.52)
+        color: rgba(5, 14, 24, 0.52);
+        margin: 0px;
+        padding-top: 5px;
+        height: 70px;
+        overflow: hidden;
+      }
+      h2 {
+        margin: 0px;
       }
       :host(:hover) p {
         color: black;
+      }
+      #delete {
+        display: inline;
+        position: absolute;
+        right: 0px;
+        top: 0px;
+        cursor: pointer;
+      }
+      #desc {
+        overflow: hidden;
+        position: absolute;
+        height: 100px
       }
       /* 
       style if an ancestor has the different class
       :host(.different) { } 
       */
     </style>
+    <div id="delete">
+      x
+    </div>
     <div class="container">
       <img src="/image/{{dish.img_key}}?height=200&width=200" />
     </div>
-    <h2>{{dish.name}}</h2>
-    <p>
-        Donec a fermentum nisi. Integer dolor est, commodo ut 
-        sagittis vitae, egestas at augue. Suspendisse id nulla 
-        ac urna vestibulum mattis. 
-    </p>
+    <div id="desc">
+      <h2>{{dish.name}}</h2>
+      <p>
+          Donec a fermentum nisi. Integer dolor est, commodo ut 
+          sagittis vitae, egestas at augue. Suspendisse id nulla 
+          ac urna vestibulum mattis. 
+      </p>
+  </div>
   </template>
   <script>
-    Polymer('heymenu-dish-item', {
+    Polymer('heymenu-dish-card', {
       // element is fully prepared
       ready: function(){ },
       // instance of the element is created
