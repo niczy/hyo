@@ -11,6 +11,7 @@ from controllers.api import CheckRestaurantUid
 application = webapp2.WSGIApplication([
   ('/', pages.Index),
   ('/api/dish', api.Dish),
+  (Route(r'/api/dish/<dish_key>', api.Dish)),
   ('/api/restaurant', api.Restaurant),
   (Route(r'/api/restaurant/<restaurant_uid>', api.Restaurant)),
   ('/api/category', api.Category),

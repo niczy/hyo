@@ -6,6 +6,7 @@ from logic import check_get_restaurant
 from model.category import Category
 from model.dish import Dish
 from model.restaurant import Restaurant
+from exceptions import DishNotExistError
 
 
 def get_all_by_category_key(category_key):
@@ -29,6 +30,8 @@ def delete_by_id(dish_id):
   delete_by_key(dish.key)
 
 def delete_by_key(dish_key):
+  if not dish_key.get():
+    raise DishNotExistError()
   dish_key.delete()
 
 def add_by_category_key(category_key, name, image_key = None):

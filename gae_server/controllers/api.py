@@ -103,8 +103,8 @@ class Dish(BaseApiHandler):
         dishes = dish_logic.get_all_by_restaurant_uid(restaurant_uid)
     self.send_response(dishes)
 
-  def delete(self, dishe_id):
-    dish_logic.delete_by_id(dish_id)
+  def delete(self, dish_key):
+    dish_logic.delete_by_key(ndb.Key(urlsafe = dish_key))
     self.send_response({"status": "ok"})
 
   '''

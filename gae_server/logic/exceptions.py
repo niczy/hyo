@@ -33,6 +33,9 @@ class RestaurantNotExistError(EntityNotExistError):
 class CategoryNotExistError(EntityNotExistError):
   pass
 
+class DishNotExistError(EntityNotExistError):
+  pass
+
 '''
   Raised when the new Restaurant uid exists.
 '''
