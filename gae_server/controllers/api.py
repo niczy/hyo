@@ -87,7 +87,10 @@ class Category(BaseApiHandler):
 
 class Dish(BaseApiHandler):
 
-  "TODO: add get all dishes."
+  '''
+    Gets all dishes if only restaurant_uid is given.
+    Gets all dishes of certain category if category_name is given.
+  '''
   def get(self):
     restaurant_uid = self.request.get(RESTAURANT_UID)
     category_name = self.request.get(CATEGORY_NAME)
@@ -99,6 +102,10 @@ class Dish(BaseApiHandler):
       else:
         dishes = dish_logic.get_all_by_restaurant_uid(restaurant_uid)
     self.send_response(dishes)
+
+  def delete(self, dishe_id):
+    dish_logic.delete_by_id(dish_id)
+    self.send_response({"status": "ok"})
 
   '''
     Adds a new dish.

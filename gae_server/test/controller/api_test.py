@@ -47,7 +47,7 @@ class ApiTest(BaseAppTest):
     response = self.testapp.post('/api/restaurant', params)
     self.assertEqual(response.status_int, 200)
     self.assertEqual(response.json,
-        {"logo": "agx0ZXN0YmVkLXRlc3RyCwsSBUltYWdlGAEM", "name": "restaurant", "uid": "restaurant-uid"})
+        {"logo": "agx0ZXN0YmVkLXRlc3RyCwsSBUltYWdlGAEM", "name": "restaurant", "uid": "restaurant-uid", "key": "agx0ZXN0YmVkLXRlc3RyHgsSClJlc3RhdXJhbnQiDnJlc3RhdXJhbnQtdWlkDA"})
 
     "Test getting resized image"
     response = self.testapp.get('/image/%s?height=2&width=2' % response.json['logo'])
@@ -55,7 +55,7 @@ class ApiTest(BaseAppTest):
     self.assertTrue(len(self.resized_base64_data) > 0)
     self.assertEqual(response.status_int, 200)
 
-    "Test deleting image"
+    "Test deleting restaurant"
     params = {'uid': restaurant_uid}
     response = self.testapp.delete('/api/restaurant/' + restaurant_uid)
     self.assertEqual(response.status_int, 200)
@@ -81,7 +81,7 @@ class ApiTest(BaseAppTest):
     response = self.testapp.post('/api/category', params)
     self.assertEqual(response.status_int, 200)
     self.assertEqual(json.dumps(response.json),
-        '{"restaurant_key": "agx0ZXN0YmVkLXRlc3RyEwsSClJlc3RhdXJhbnQiA3VpZAw", "name": "name"}')
+        '{"restaurant_key": "agx0ZXN0YmVkLXRlc3RyEwsSClJlc3RhdXJhbnQiA3VpZAw", "name": "name", "key": "agx0ZXN0YmVkLXRlc3RyDgsSCENhdGVnb3J5GAEM"}')
 
   def testGetCategories(self):
     restaurant_uid = 'uid'
@@ -90,16 +90,16 @@ class ApiTest(BaseAppTest):
     category_logic.add(restaurant_uid, 'category 2')
     response = self.testapp.get('/api/category?uid=%s' % restaurant_uid)
     self.assertEqual(response.status_int, 200)
-    self.assertEqual(json.dumps(response.json), '[{"restaurant_key": "agx0ZXN0YmVkLXRlc3RyEwsSClJlc3RhdXJhbnQiA3VpZAw", "name": "category 1"}, {"restaurant_key": "agx0ZXN0YmVkLXRlc3RyEwsSClJlc3RhdXJhbnQiA3VpZAw", "name": "category 2"}]')
+    self.assertEqual(json.dumps(response.json), '[{"restaurant_key": "agx0ZXN0YmVkLXRlc3RyEwsSClJlc3RhdXJhbnQiA3VpZAw", "name": "category 1", "key": "agx0ZXN0YmVkLXRlc3RyDgsSCENhdGVnb3J5GAEM"}, {"restaurant_key": "agx0ZXN0YmVkLXRlc3RyEwsSClJlc3RhdXJhbnQiA3VpZAw", "name": "category 2", "key": "agx0ZXN0YmVkLXRlc3RyDgsSCENhdGVnb3J5GAIM"}]')
 
-  def testAddDish(self):
+  def testAddAndDeleteDish(self):
     restaurant_uid = 'uid'
     restaurant_logic.add(restaurant_uid, 'fulinmen')
     category_logic.add(restaurant_uid, 'category 1')
     params = {'uid': restaurant_uid, 'category_name': 'category 1', 'name': 'dish 1'}
     response = self.testapp.post('/api/dish', params)
     self.assertEqual(response.status_int, 200)
-    self.assertEqual(json.dumps(response.json), '{"category_key": "agx0ZXN0YmVkLXRlc3RyDgsSCENhdGVnb3J5GAEM", "img_key": null, "restaurant_key": "agx0ZXN0YmVkLXRlc3RyEwsSClJlc3RhdXJhbnQiA3VpZAw", "name": "dish 1"}')
+    self.assertEqual(json.dumps(response.json), '{"category_key": "agx0ZXN0YmVkLXRlc3RyDgsSCENhdGVnb3J5GAEM", "img_key": null, "restaurant_key": "agx0ZXN0YmVkLXRlc3RyEwsSClJlc3RhdXJhbnQiA3VpZAw", "name": "dish 1", "key": "agx0ZXN0YmVkLXRlc3RyCgsSBERpc2gYAgw"}')
 
     params = {'uid': restaurant_uid, 'category_name': 'category 1', 'name': 'dish 1', "image_data": self.image_data}
     response = self.testapp.post('/api/dish', params)
@@ -107,7 +107,7 @@ class ApiTest(BaseAppTest):
     self.assertEqual(json.dumps(response.json), ('{"category_key": "agx0ZXN0YmVkLXRlc3RyDgsSCENhdGVnb3J5GAEM", '
                                                 '"img_key": "agx0ZXN0YmVkLXRlc3RyCwsSBUltYWdlGAMM", '
                                                 '"restaurant_key": "agx0ZXN0YmVkLXRlc3RyEwsSClJlc3RhdXJhbnQiA3VpZAw", '
-                                                '"name": "dish 1"}'))
+                                                '"name": "dish 1", "key": "agx0ZXN0YmVkLXRlc3RyCgsSBERpc2gYBAw"}'))
 
 
   def testGetDishes(self):
@@ -119,5 +119,5 @@ class ApiTest(BaseAppTest):
     dish_logic.add(restaurant_uid, category_name, 'Dish 2')
     response = self.testapp.get('/api/dish?uid=%s' % restaurant_uid)
     self.assertEqual(response.status_int, 200)
-    self.assertEqual(json.dumps(response.json), '[{"category_key": "agx0ZXN0YmVkLXRlc3RyDgsSCENhdGVnb3J5GAEM", "img_key": null, "restaurant_key": "agx0ZXN0YmVkLXRlc3RyEwsSClJlc3RhdXJhbnQiA3VpZAw", "name": "Dish 1"}, {"category_key": "agx0ZXN0YmVkLXRlc3RyDgsSCENhdGVnb3J5GAEM", "img_key": null, "restaurant_key": "agx0ZXN0YmVkLXRlc3RyEwsSClJlc3RhdXJhbnQiA3VpZAw", "name": "Dish 2"}]')
+    self.assertEqual(json.dumps(response.json), '[{"category_key": "agx0ZXN0YmVkLXRlc3RyDgsSCENhdGVnb3J5GAEM", "img_key": null, "restaurant_key": "agx0ZXN0YmVkLXRlc3RyEwsSClJlc3RhdXJhbnQiA3VpZAw", "name": "Dish 1", "key": "agx0ZXN0YmVkLXRlc3RyCgsSBERpc2gYAgw"}, {"category_key": "agx0ZXN0YmVkLXRlc3RyDgsSCENhdGVnb3J5GAEM", "img_key": null, "restaurant_key": "agx0ZXN0YmVkLXRlc3RyEwsSClJlc3RhdXJhbnQiA3VpZAw", "name": "Dish 2", "key": "agx0ZXN0YmVkLXRlc3RyCgsSBERpc2gYAww"}]')
 
