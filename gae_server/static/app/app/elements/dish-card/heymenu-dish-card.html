@@ -5,6 +5,9 @@
 attributes:
   dish: the json dish config containing title description and image.
 
+fires:
+  'dish-deleted' event.
+
 -->
 <polymer-element name="heymenu-dish-card"  attributes="dish">
   <template>
@@ -55,7 +58,7 @@ attributes:
       :host(.different) { } 
       */
     </style>
-    <div id="delete">
+    <div id="delete" on-click={{deleteDish}}>
       x
     </div>
     <div class="container">
@@ -68,6 +71,12 @@ attributes:
           sagittis vitae, egestas at augue. Suspendisse id nulla 
           ac urna vestibulum mattis. 
       </p>
+     <core-ajax
+        id="deleteDish"
+        method="DELETE"
+        handleAs="json"
+        on-core-response = "{{onDishDeleted}}" 
+        url = "/api/dish/{{dish.key}}"></core-ajax>
   </div>
   </template>
   <script>
@@ -81,7 +90,15 @@ attributes:
       // instance was removed from the document
       leftView: function() { },
       // attribute added, removed or updated
-      attributeChanged: function(attrName, oldVal, newVal) { }
+      attributeChanged: function(attrName, oldVal, newVal) { },
+
+      onDishDeleted: function(resp) {
+        console.log(resp);
+      },
+      deleteDish: function() {
+        this.$.deleteDish.go();
+        this.fire('dish-deleted', {'key': this.dish.key});
+      }
     });
   </script>
 </polymer-element>

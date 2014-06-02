@@ -2,6 +2,7 @@
 <link rel="import" href="../bower_components/core-drawer-panel/core-drawer-panel.html">
 <link rel="import" href="heymenu-dish-category.html">
 <link rel="import" href="heymenu-pin-layout.html">
+<link rel="import" href="heymenu-dish-editor.html">
 <link rel="import" href="dish-card/heymenu-dish-card.html">
 
 
@@ -53,10 +54,11 @@
           </heymenu-button>
         </div>
         <div main>
-          <heymenu-dish-editor id="dishEditor" class="hidden" restaurant_uid = {{restaurant_uid}} class="pin"></heymenu-dish-editor>
+          <heymenu-dish-editor id="dishEditor" class="hidden" restaurant_uid = {{restaurant_uid}} class="pin">
+          </heymenu-dish-editor>
           <heymenu-pin-layout>
             <template repeat="{{ dish in dishesObj }}">
-              <heymenu-dish-card dish = {{dish}} class="pin"></heymenu-dish-card>
+            <heymenu-dish-card dish = {{dish}} class="pin" on-dish-deleted={{onDishDeleted}}></heymenu-dish-card>
             </template>
           </heymenu-pin-layout>
         </div>
@@ -86,6 +88,13 @@
       onNewDish: function() {
         this.$.dishEditor.classList.toggle('hidden');
         this.$.newDishButton.classList.toggle('hidden');
+      },
+      onDishDeleted: function(event, detail, sender) {
+        this.dishesObj.forEach(function(dish, index, arr) {
+          if (dish.key == detail.key) {
+            arr.splice(index, 1);
+          }
+        });
       }
     });
   </script>

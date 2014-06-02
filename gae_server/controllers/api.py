@@ -104,8 +104,8 @@ class Dish(BaseApiHandler):
     self.send_response(dishes)
 
   def delete(self, dish_key):
-    dish_logic.delete_by_key(ndb.Key(urlsafe = dish_key))
-    self.send_response({"status": "ok"})
+    dish = dish_logic.delete_by_key(ndb.Key(urlsafe = dish_key))
+    self.send_response(dish)
 
   '''
     Adds a new dish.

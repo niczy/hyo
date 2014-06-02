@@ -30,9 +30,11 @@ def delete_by_id(dish_id):
   delete_by_key(dish.key)
 
 def delete_by_key(dish_key):
-  if not dish_key.get():
+  dish = dish_key.get()
+  if not dish:
     raise DishNotExistError()
   dish_key.delete()
+  return dish
 
 def add_by_category_key(category_key, name, image_key = None):
   category = check_get_cateogry(category_key)
